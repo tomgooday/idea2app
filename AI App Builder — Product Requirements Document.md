@@ -590,44 +590,48 @@ The dashboard should show:
 
 # 14. Monetisation
 
-Initial model should support multiple products.
+**Updated per stakeholder decision — see Section 23.** The site itself
+(the 10-step overview, tool directory, and a starter prompt set) remains
+free to browse. On top of that, the product is sold as three named
+products, plus one future offering:
 
-### Free
+### DIY — "The 10-Step Playbook" — $99–299 (one-time)
 
-- overview of 10 steps
-- basic guides
-- selected prompts
+- Complete 10-step framework — video walkthroughs for every step
+- Full AI prompt library
+- All templates (PRD, database schema, API spec, and more)
+- Step-by-step checklists for every step
+- Lifetime access to updates
 
-### Pro
+### PRO — "Build Your App" — $500–1,500 (one-time)
 
-Paid one-time purchase or subscription.
+Everything in DIY, plus:
 
-Includes:
+- Private community of other builders
+- Expert review of your app as you build it
+- Priority access to new prompts and templates
+- Project dashboard with progress tracking
 
-- complete 10-step framework
-- full prompt library
-- templates
-- detailed guides
-- project dashboard
-- AI-generated PRD
-- AI-generated database schema
-- launch checklists
+### Done With You — "Launch Your App" — $3k–10k+ (project-based)
 
-### Premium
+Everything in Pro, plus:
 
-"Build With Me"
+- Hands-on help building your app, step by step
+- Architecture and code reviews from a real engineer
+- Direct support through App Store and Google Play submission
+- A real, launched app at the end
 
-Includes:
+### Future: Done For You — "Give us your idea. We'll build it."
 
-- everything in Pro
-- expert reviews
-- architecture reviews
-- troubleshooting
-- product guidance
+A full product-studio offering for founders who want the outcome, not the
+process — you describe the idea, the team scopes, builds and launches it.
+Positioned as a materially larger business than the framework/education
+product (consultancy / product studio), to be introduced after DIY, Pro
+and Done With You are live and validated.
 
-### Future
-
-Done-for-you app development.
+Exact price points within each range, and the billing mechanism (Stripe
+checkout vs. an application/sales process for Done With You), are not
+yet finalised — see open items in Section 23.
 
 ---
 
@@ -868,4 +872,7 @@ Decisions confirmed with stakeholder on first PRD review:
 - **Content:** No existing copy for the 10 steps, tool directory, prompts, or templates. Draft placeholder/production-quality copy as part of the build; stakeholder to review and refine after first draft.
 - **Authentication provider:** Clerk (deferred to Build Pass 2).
 - **Analytics provider:** PostHog (product analytics — useful for tracking step-completion funnels, not just pageviews).
-- **Open / not yet decided:** CMS approach beyond "content in DB," AU-specific billing details (GST, ABN, invoicing entity), SEO/content-marketing plan, final pricing amounts.
+- **Open / not yet decided:** CMS approach beyond "content in DB," AU-specific billing details (GST, ABN, invoicing entity), SEO/content-marketing plan.
+- **Tool directory scope:** Each tool gets its own detail page (`/tools/[slug]`) in Build Pass 1, not just directory cards.
+- **Pricing model (supersedes the original Free/Pro/Premium draft in Section 14):** Three paid products — **DIY** ("The 10-Step Playbook," $99–299 one-time), **PRO** ("Build Your App," $500–1,500 one-time), and **Done With You** ("Launch Your App," $3k–10k+ project-based) — plus a future **Done For You** ("Give us your idea. We'll build it.") product-studio offering, introduced later as a potentially much larger consultancy/product-studio business. Browsing the framework itself (steps, tools, starter prompts) stays free. No live checkout yet in Build Pass 1 — pricing page CTAs currently route to a `mailto:` interest-registration link as a placeholder.
+- **Open / not yet decided:** exact price points within each range, DIY/Pro checkout mechanism vs. Done With You's application/sales process, and whether Done With You should be application-gated or self-serve.

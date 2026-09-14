@@ -1,4 +1,4 @@
-import { Check } from "lucide-react";
+import { Check, Clock } from "lucide-react";
 import type { PricingPlan } from "@/lib/data/pricing";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -10,25 +10,40 @@ export function PricingCard({ plan }: { plan: PricingPlan }) {
         "flex flex-col gap-6 rounded-2xl border p-8",
         plan.highlighted
           ? "border-accent bg-accent-soft/40 shadow-[0_0_0_1px_rgba(109,110,248,0.4)]"
-          : "border-border bg-elevated"
+          : "border-border bg-elevated",
+        plan.comingSoon && "opacity-80"
       )}
     >
       <div>
-        <h3 className="text-lg font-semibold text-foreground">{plan.name}</h3>
-        <p className="mt-1 text-sm text-muted">{plan.description}</p>
+        <div className="flex items-center gap-2">
+          <h3 className="text-lg font-semibold text-foreground">
+            {plan.name}
+          </h3>
+          {plan.comingSoon ? (
+            <span className="inline-flex items-center gap-1 rounded-full border border-border-strong bg-background px-2 py-0.5 text-[11px] font-medium text-muted-foreground">
+              <Clock className="h-3 w-3" />
+              Coming Soon
+            </span>
+          ) : null}
+        </div>
+        <p className="mt-1 text-sm font-medium text-accent">{plan.tagline}</p>
+        <p className="mt-2 text-sm text-muted">{plan.description}</p>
       </div>
 
       <div>
         <span className="text-4xl font-semibold tracking-tight text-foreground">
-          {plan.price}
+          {plan.priceRange}
         </span>
-        <span className="ml-2 text-sm text-muted-foreground">
-          {plan.billingNote}
-        </span>
+        {plan.billingNote ? (
+          <span className="ml-2 text-sm text-muted-foreground">
+            {plan.billingNote}
+          </span>
+        ) : null}
       </div>
 
       <Button
         href={plan.href}
+        external={plan.href.startsWith("mailto:")}
         variant={plan.highlighted ? "primary" : "secondary"}
         className="w-full"
       >

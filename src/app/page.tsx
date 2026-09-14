@@ -148,15 +148,24 @@ export default function HomePage() {
           <SectionHeading
             align="center"
             eyebrow="Pricing"
-            title="Start free. Go deeper when you're ready."
-            description="Pro and Premium pricing is being finalised — join the list to get notified at launch."
+            title="Pick how hands-on you want us to be."
+            description="Browsing the whole framework is free. When you're ready to build, choose your level of support."
           />
 
           <div className="mx-auto mt-14 grid max-w-5xl gap-6 sm:grid-cols-3">
-            {pricingPlans.map((plan) => (
-              <PricingCard key={plan.slug} plan={plan} />
-            ))}
+            {pricingPlans
+              .filter((plan) => !plan.comingSoon)
+              .map((plan) => (
+                <PricingCard key={plan.slug} plan={plan} />
+              ))}
           </div>
+
+          <p className="mt-8 text-center text-sm text-muted">
+            Prefer to just hand us the idea?{" "}
+            <Link href="/pricing" className="font-medium text-accent hover:text-accent-hover">
+              Done For You is coming soon →
+            </Link>
+          </p>
         </Container>
       </section>
 

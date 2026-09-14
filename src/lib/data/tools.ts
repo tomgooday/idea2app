@@ -22,6 +22,8 @@ export type Tool = {
   alternatives: string[];
   /** Step numbers (see steps.ts) this tool is used in. */
   usedInSteps: number[];
+  /** Quick-start bullets shown on the tool detail page. */
+  gettingStarted: string[];
 };
 
 export const tools: Tool[] = [
@@ -37,6 +39,12 @@ export const tools: Tool[] = [
     pricing: "Free tier available · Pro from ~US$20/mo",
     alternatives: ["ChatGPT", "Gemini"],
     usedInSteps: [1, 2, 4],
+    gettingStarted: [
+      "Create a free account at claude.ai",
+      "Start with the MVP product spec prompt from the prompt library",
+      "Keep one long-running conversation per major decision (spec, schema, architecture)",
+      "Paste real context (your spec, schema, code) rather than describing it from memory",
+    ],
   },
   {
     slug: "cursor",
@@ -50,6 +58,12 @@ export const tools: Tool[] = [
     pricing: "Free tier available · Pro from ~US$20/mo",
     alternatives: ["GitHub Copilot", "Windsurf"],
     usedInSteps: [4],
+    gettingStarted: [
+      "Install Cursor and open your project's GitHub repository",
+      "Give it your product spec and database schema as context before building anything",
+      "Ask it to implement one feature at a time, not the whole app in one prompt",
+      "Review every diff before accepting — you're the reviewer, not just the requester",
+    ],
   },
   {
     slug: "github",
@@ -63,6 +77,12 @@ export const tools: Tool[] = [
     pricing: "Free for individuals and small teams",
     alternatives: ["GitLab", "Bitbucket"],
     usedInSteps: [4, 5, 8],
+    gettingStarted: [
+      "Create a free GitHub account and a new private repository",
+      "Have your AI coding agent commit as it builds, not in one giant commit at the end",
+      "Connect the repository to Vercel in Step 5 for automatic deployments",
+      "Use branches for anything experimental so `main` always stays deployable",
+    ],
   },
   {
     slug: "neon",
@@ -76,6 +96,12 @@ export const tools: Tool[] = [
     pricing: "Free tier available · usage-based pricing beyond that",
     alternatives: ["Supabase", "PlanetScale"],
     usedInSteps: [3, 5, 10],
+    gettingStarted: [
+      "Create a free Neon account and a new project",
+      "Use the database prompt from the prompt library to design your schema first",
+      "Create separate branches (or projects) for development, staging and production",
+      "Connect your production branch to Vercel with environment variables, never hard-coded credentials",
+    ],
   },
   {
     slug: "vercel",
@@ -89,6 +115,12 @@ export const tools: Tool[] = [
     pricing: "Free tier available · Pro from ~US$20/mo",
     alternatives: ["Netlify", "Railway"],
     usedInSteps: [5, 10],
+    gettingStarted: [
+      "Create a free Vercel account and import your GitHub repository",
+      "Set environment variables separately for Preview and Production",
+      "Use Preview deployments to test every change before it reaches production",
+      "Point your custom domain at your Production deployment in Step 10",
+    ],
   },
   {
     slug: "flutter",
@@ -102,6 +134,12 @@ export const tools: Tool[] = [
     pricing: "Free and open source",
     alternatives: ["React Native", "native iOS/Android"],
     usedInSteps: [6],
+    gettingStarted: [
+      "Install the Flutter SDK and set up an iOS and Android simulator",
+      "Connect your Flutter app to the same backend APIs you built in Step 5",
+      "Rebuild your core screens from the prototype in Step 2 using Flutter widgets",
+      "Test on a real device before moving on to Step 7",
+    ],
   },
   {
     slug: "react-native",
@@ -115,6 +153,12 @@ export const tools: Tool[] = [
     pricing: "Free and open source",
     alternatives: ["Flutter", "native iOS/Android"],
     usedInSteps: [6],
+    gettingStarted: [
+      "Set up a React Native project with Expo for the fastest start",
+      "Reuse any shared logic from your Next.js codebase where possible",
+      "Connect to the same backend APIs you built in Step 5",
+      "Test on a real device before moving on to Step 7",
+    ],
   },
   {
     slug: "onesignal",
@@ -128,6 +172,12 @@ export const tools: Tool[] = [
     pricing: "Free tier available · usage-based pricing beyond that",
     alternatives: ["Firebase Cloud Messaging", "Resend"],
     usedInSteps: [7],
+    gettingStarted: [
+      "Create a free OneSignal account and add your app",
+      "Connect the SDK to your web and/or mobile app",
+      "Pick 2-3 key events actually worth notifying users about",
+      "Test delivery on a real device before considering it done",
+    ],
   },
   {
     slug: "xcode",
@@ -141,6 +191,12 @@ export const tools: Tool[] = [
     pricing: "Apple Developer Program: US$99/year",
     alternatives: [],
     usedInSteps: [9],
+    gettingStarted: [
+      "Enrol in the Apple Developer Program (US$99/year)",
+      "Create your app's listing in App Store Connect",
+      "Configure signing certificates and provisioning profiles in Xcode",
+      "Prepare screenshots, metadata and privacy disclosures before submitting",
+    ],
   },
   {
     slug: "google-play-console",
@@ -154,11 +210,25 @@ export const tools: Tool[] = [
     pricing: "One-time US$25 registration fee",
     alternatives: [],
     usedInSteps: [9],
+    gettingStarted: [
+      "Register a Google Play Console account (one-time US$25 fee)",
+      "Create your app's store listing",
+      "Set up your Android build and signing pipeline",
+      "Prepare screenshots, metadata and privacy disclosures before submitting",
+    ],
   },
 ];
 
 export function getToolBySlug(slug: string): Tool | undefined {
   return tools.find((tool) => tool.slug === slug);
+}
+
+export function getAdjacentTools(slug: string) {
+  const index = tools.findIndex((tool) => tool.slug === slug);
+  return {
+    previous: index > 0 ? tools[index - 1] : undefined,
+    next: index >= 0 && index < tools.length - 1 ? tools[index + 1] : undefined,
+  };
 }
 
 export function getToolsByCategory(): Record<ToolCategory, Tool[]> {

@@ -1,9 +1,14 @@
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { Icon } from "@/components/icon";
 import type { Tool } from "@/lib/data/tools";
 
 export function ToolCard({ tool }: { tool: Tool }) {
   return (
-    <div className="flex flex-col gap-4 rounded-2xl border border-border bg-elevated p-6">
+    <Link
+      href={`/tools/${tool.slug}`}
+      className="group flex flex-col gap-4 rounded-2xl border border-border bg-elevated p-6 transition-colors duration-150 hover:border-border-strong hover:bg-elevated-hover"
+    >
       <div className="flex items-center justify-between">
         <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent-soft text-accent">
           <Icon name={tool.icon} className="h-5 w-5" />
@@ -28,21 +33,12 @@ export function ToolCard({ tool }: { tool: Tool }) {
           {tool.why}
         </p>
         <p className="text-muted-foreground">{tool.pricing}</p>
-        {tool.alternatives.length > 0 ? (
-          <p className="text-muted-foreground">
-            Alternatives: {tool.alternatives.join(", ")}
-          </p>
-        ) : null}
       </div>
 
-      <a
-        href={tool.link}
-        target="_blank"
-        rel="noreferrer"
-        className="text-sm font-medium text-accent hover:text-accent-hover"
-      >
-        Visit {tool.name.split(" ")[0]} →
-      </a>
-    </div>
+      <div className="flex items-center gap-1.5 text-sm font-medium text-accent opacity-0 transition-opacity duration-150 group-hover:opacity-100">
+        Learn more
+        <ArrowRight className="h-3.5 w-3.5" />
+      </div>
+    </Link>
   );
 }
