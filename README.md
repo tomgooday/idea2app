@@ -3,7 +3,7 @@
 From idea to App Store in 10 steps.
 
 This is the marketing site + framework content for **Idea2App**
-(`idea2app.com.au`) — see
+(`idea2app.co`) — see
 [`AI App Builder — Product Requirements Document.md`](./AI%20App%20Builder%20%E2%80%94%20Product%20Requirements%20Document.md)
 for the full product spec, and Section 23 for the decisions log.
 

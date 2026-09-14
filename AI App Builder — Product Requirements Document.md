@@ -17,7 +17,7 @@ The initial product should be structured around a simple **10-step framework**.
 
 Working brand name:
 
-**Idea2App** (domain: idea2app.com.au)
+**Idea2App** (domain: idea2app.co)
 
 Working proposition:
 
@@ -712,7 +712,7 @@ The user should immediately feel:
 
 Working brand:
 
-**Idea2App** (idea2app.com.au)
+**Idea2App** (idea2app.co)
 
 Tagline:
 
@@ -867,7 +867,7 @@ Where a product decision is unclear, prioritise:
 
 Decisions confirmed with stakeholder on first PRD review:
 
-- **Brand / domain:** `idea2app.com.au` is the real brand and domain. Working brand name updated to **Idea2App** throughout this document (replacing the placeholder "Couch to App"). Brand name remains configurable in code per Section 17.
+- **Brand / domain:** `idea2app.co` is the real brand and domain. Working brand name updated to **Idea2App** throughout this document (replacing the placeholder "Couch to App"). Brand name remains configurable in code per Section 17.
 - **First build scope:** Leanest possible first pass — marketing homepage, 10-step content, step detail pages, tool directory, and prompt library only. No auth, dashboard, project creation, or payments in Pass 1 (see Section 22).
 - **Content:** No existing copy for the 10 steps, tool directory, prompts, or templates. Draft placeholder/production-quality copy as part of the build; stakeholder to review and refine after first draft.
 - **Authentication provider:** Clerk (deferred to Build Pass 2).
@@ -876,3 +876,5 @@ Decisions confirmed with stakeholder on first PRD review:
 - **Tool directory scope:** Each tool gets its own detail page (`/tools/[slug]`) in Build Pass 1, not just directory cards.
 - **Pricing model (supersedes the original Free/Pro/Premium draft in Section 14):** Three paid products — **DIY** ("The 10-Step Playbook," $99–299 one-time), **PRO** ("Build Your App," $500–1,500 one-time), and **Done With You** ("Launch Your App," $3k–10k+ project-based) — plus a future **Done For You** ("Give us your idea. We'll build it.") product-studio offering, introduced later as a potentially much larger consultancy/product-studio business. Browsing the framework itself (steps, tools, starter prompts) stays free. No live checkout yet in Build Pass 1 — pricing page CTAs currently route to a `mailto:` interest-registration link as a placeholder.
 - **Open / not yet decided:** exact price points within each range, DIY/Pro checkout mechanism vs. Done With You's application/sales process, and whether Done With You should be application-gated or self-serve.
+- **Domain update:** switched from `idea2app.com.au` to **`idea2app.co`** (stakeholder now owns this domain). Updated throughout — brand name, contact email, and this document.
+- **Content gating:** the full step-by-step "what you'll do" checklist, key principle and common mistake for each step is the core paid IP of the DIY Playbook. Steps 1–2 remain fully open on the public site as a preview; Steps 3–10 show the step's overview, first checklist item, recommended tools and expected output for free, then blur/lock the remainder behind a "Get the DIY Playbook" CTA. This is a Build Pass 1 stopgap (simple constant-based gating, no real entitlement check) — real access control arrives with auth + purchases in Build Pass 2.

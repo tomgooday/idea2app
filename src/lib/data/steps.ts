@@ -256,6 +256,20 @@ export const steps: Step[] = [
   },
 ];
 
+/**
+ * Steps 1-2 are fully open as a preview. Steps 3-10 are the core paid IP
+ * of the DIY Playbook, so their full checklist is gated on the public
+ * site — see PRD Section 23 ("Content gating").
+ *
+ * This is a Build Pass 1 stopgap (no real entitlement check). Build Pass 2
+ * replaces this with real access control tied to a purchase/account.
+ */
+const FREE_PREVIEW_STEP_COUNT = 2;
+
+export function isStepFree(number: number): boolean {
+  return number <= FREE_PREVIEW_STEP_COUNT;
+}
+
 export function getStepBySlug(slug: string): Step | undefined {
   return steps.find((step) => step.slug === slug);
 }

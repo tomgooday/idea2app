@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, Check, Lightbulb, AlertTriangle } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Lightbulb, AlertTriangle, Lock } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { getAdjacentSteps, getStepBySlug, steps } from "@/lib/data/steps";
+import { LockedChecklist } from "@/components/locked-checklist";
+import { getAdjacentSteps, getStepBySlug, isStepFree, steps } from "@/lib/data/steps";
 import { getToolBySlug } from "@/lib/data/tools";
 
 export function generateStaticParams() {
@@ -35,6 +36,7 @@ export default async function StepDetailPage({
   const recommendedTools = step.tools
     .map((toolSlug) => getToolBySlug(toolSlug))
     .filter((t): t is NonNullable<typeof t> => Boolean(t));
+  const free = isStepFree(step.number);
 
   return (
     <>
@@ -56,6 +58,16 @@ export default async function StepDetailPage({
             <span className="text-sm text-muted-foreground">
               {step.estimatedTime}
             </span>
+            {free ? (
+              <Badge className="border-accent/40 text-accent">
+                Free preview
+              </Badge>
+            ) : (
+              <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
+                <Lock className="h-3 w-3" />
+                DIY Playbook
+              </span>
+            )}
           </div>
 
           <h1 className="mt-4 max-w-2xl text-balance text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
@@ -75,17 +87,23 @@ export default async function StepDetailPage({
                 <h2 className="text-lg font-semibold text-foreground">
                   What you&apos;ll do
                 </h2>
-                <ul className="mt-4 space-y-3">
-                  {step.whatYouWillDo.map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-muted">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                      <span className="leading-relaxed">{item}</span>
-                    </li>
-                  ))}
-                </ul>
+                <div className="mt-4">
+                  {free ? (
+                    <ul className="space-y-3">
+                      {step.whatYouWillDo.map((item) => (
+                        <li key={item} className="flex items-start gap-3 text-muted">
+                          <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                          <span className="leading-relaxed">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <LockedChecklist items={step.whatYouWillDo} />
+                  )}
+                </div>
               </div>
 
-              {step.keyPrinciple ? (
+              {free && step.keyPrinciple ? (
                 <div className="flex gap-3 rounded-2xl border border-accent/30 bg-accent-soft p-5">
                   <Lightbulb className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
                   <p className="text-sm leading-relaxed text-foreground">
@@ -95,7 +113,7 @@ export default async function StepDetailPage({
                 </div>
               ) : null}
 
-              {step.commonMistake ? (
+              {free && step.commonMistake ? (
                 <div className="flex gap-3 rounded-2xl border border-border-strong bg-elevated p-5">
                   <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-muted-foreground" />
                   <p className="text-sm leading-relaxed text-muted">
@@ -104,6 +122,23 @@ export default async function StepDetailPage({
                     </span>
                     {step.commonMistake}
                   </p>
+                </div>
+              ) : null}
+
+              {!free ? (
+                <div className="rounded-2xl border border-border-strong bg-elevated p-6">
+                  <p className="text-sm leading-relaxed text-muted">
+                    The key principle, common mistakes to avoid, and the
+                    exact prompts for this step are part of the{" "}
+                    <span className="font-medium text-foreground">
+                      DIY Playbook
+                    </span>
+                    .
+                  </p>
+                  <Button href="/pricing" size="sm" className="mt-4">
+                    See what&apos;s included
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Button>
                 </div>
               ) : null}
             </div>

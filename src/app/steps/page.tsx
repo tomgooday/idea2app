@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Lock } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Badge } from "@/components/ui/badge";
 import { SectionHeading } from "@/components/section-heading";
-import { steps } from "@/lib/data/steps";
+import { isStepFree, steps } from "@/lib/data/steps";
 import { getToolBySlug } from "@/lib/data/tools";
 
 export const metadata: Metadata = {
@@ -22,7 +22,7 @@ export default function StepsPage() {
             align="center"
             eyebrow="The Framework"
             title="Idea → Prototype → Database → Code → Backend → Mobile → Testing → App Stores → Launch"
-            description="Ten steps. Each one tells you exactly what to build, what tool to use, and what to hand the AI — so you always know what happens next."
+            description="Ten steps. Each one tells you exactly what to build, what tool to use, and what to hand the AI. Steps 1–2 are open to everyone — the full walkthrough for Steps 3–10 is part of the DIY Playbook."
           />
         </Container>
       </section>
@@ -51,6 +51,12 @@ export default function StepsPage() {
                       <span className="text-xs text-muted-foreground">
                         {step.estimatedTime}
                       </span>
+                      {!isStepFree(step.number) ? (
+                        <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
+                          <Lock className="h-3 w-3" />
+                          DIY Playbook
+                        </span>
+                      ) : null}
                     </div>
                     <p className="mt-2 text-sm leading-relaxed text-muted">
                       {step.summary}

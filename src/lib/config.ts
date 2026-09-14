@@ -7,8 +7,8 @@
  */
 export const siteConfig = {
   name: "Idea2App",
-  domain: "idea2app.com.au",
-  url: "https://idea2app.com.au",
+  domain: "idea2app.co",
+  url: "https://idea2app.co",
   tagline: "From idea to App Store in 10 steps.",
   description:
     "Idea2App packages the tools, prompts, templates and technical knowledge you need to turn an idea into a real iOS, Android and web app using AI — even if you've never written a line of code.",
