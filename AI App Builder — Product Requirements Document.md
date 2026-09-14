@@ -1,0 +1,871 @@
+# Product Requirements Document
+## AI App Builder — "Idea2App"
+
+### 1. Product Overview
+
+Build a web-based product that helps non-technical people turn an idea into a real, functioning application using modern AI development tools.
+
+The core proposition is:
+
+> **You have an idea. We'll show you how to turn it into a real app.**
+
+The product packages the tools, processes, prompts, templates and technical knowledge required to go from:
+
+**Idea → Prototype → Database → Code → Backend → Mobile → Testing → App Stores → Launch**
+
+The initial product should be structured around a simple **10-step framework**.
+
+Working brand name:
+
+**Idea2App** (domain: idea2app.com.au)
+
+Working proposition:
+
+> **From idea to App Store in 10 steps.**
+
+Alternative positioning:
+
+> **Build a real app with AI — even if you can't code.**
+
+The product should ultimately be capable of becoming a paid digital product, education platform, community and/or "done with you" service.
+
+---
+
+# 2. Problem
+
+AI has dramatically reduced the difficulty of building software, but the process is still fragmented.
+
+A non-technical person with an app idea currently needs to understand and configure:
+
+- AI coding tools
+- Claude / LLMs
+- Cursor / coding agents
+- GitHub
+- databases
+- APIs
+- hosting
+- environment variables
+- authentication
+- mobile frameworks
+- iOS development
+- Android development
+- notifications
+- App Store submission
+- Google Play submission
+- domains
+- deployment
+- testing
+- production environments
+
+The individual tools are relatively accessible.
+
+The difficult part is knowing:
+
+> **What do I use, in what order, and how do I connect everything together?**
+
+This product solves that problem.
+
+---
+
+# 3. Target Customer
+
+Primary customer:
+
+A non-technical or lightly technical person who:
+
+- has an idea for an app
+- wants to build it themselves
+- is interested in AI
+- has little or no traditional software development experience
+- does not want to spend tens of thousands of dollars hiring developers
+- wants to understand what is happening rather than simply generating a prototype
+- wants to ultimately launch a real product
+
+Examples:
+
+- founders with an idea
+- entrepreneurs
+- consultants
+- creators
+- product managers
+- small business owners
+- students
+- people with side-project ideas
+- aspiring indie hackers
+
+Secondary customer:
+
+Existing developers who want to accelerate development using AI.
+
+---
+
+# 4. Product Philosophy
+
+The product should NOT position itself as:
+
+> "AI will magically build your app for you."
+
+Instead:
+
+> **AI is the new development team. We provide the operating system for using it.**
+
+The customer remains in control.
+
+The product teaches them:
+
+- what to build
+- what tools to use
+- what order to use them in
+- what prompts to give the AI
+- how to verify the AI's work
+- how to deploy
+- how to troubleshoot
+
+The product should emphasise that a prototype and a production application are different things.
+
+---
+
+# 5. Core 10-Step Framework
+
+## Step 1 — Define Your Idea
+
+Turn the initial idea into:
+
+- product proposition
+- target customer
+- core problem
+- MVP
+- key user journeys
+- functional requirements
+
+Output:
+
+**A clear product specification.**
+
+---
+
+## Step 2 — Prototype
+
+Create a visual prototype of the application.
+
+The user should define:
+
+- screens
+- navigation
+- primary actions
+- user journeys
+- core functionality
+
+Output:
+
+**A working product prototype.**
+
+---
+
+## Step 3 — Design the Database
+
+Before generating large amounts of code, define:
+
+- database entities
+- relationships
+- tables
+- fields
+- authentication model
+- permissions
+- APIs
+
+Recommended technology:
+
+**PostgreSQL / Neon**
+
+Important principle:
+
+> Design the database before allowing the AI coding agent to build the full application.
+
+This avoids a common failure mode where AI generates an application structure that later becomes difficult to modify.
+
+---
+
+## Step 4 — Build With AI
+
+Recommended stack:
+
+- Claude
+- Cursor
+- GitHub
+
+The AI coding agent should be given the product specification and database architecture.
+
+The system should encourage the user to:
+
+1. create the repository
+2. establish the project structure
+3. create the database
+4. implement features incrementally
+5. test each feature
+6. commit changes to GitHub
+
+---
+
+## Step 5 — Backend & Hosting
+
+Recommended tools:
+
+- Vercel
+- Neon
+- GitHub
+
+Vercel manages:
+
+- deployment
+- environment variables
+- API infrastructure
+- server logs
+- production deployment
+
+Neon manages:
+
+- PostgreSQL database
+- staging database
+- production database
+
+The product should explain:
+
+**Development → Staging → Production**
+
+and why users should not build directly against their production environment.
+
+---
+
+## Step 6 — Turn It Into a Mobile App
+
+Recommended framework:
+
+**Flutter**
+
+Alternative:
+
+**React Native**
+
+Goal:
+
+> One codebase → iOS + Android + Web
+
+The product should explain the trade-offs between:
+
+- web app
+- PWA
+- Flutter
+- React Native
+- native development
+
+For the standard pathway, recommend Flutter unless there is a strong reason to choose React Native.
+
+---
+
+## Step 7 — Notifications & Communications
+
+Recommended:
+
+**OneSignal**
+
+Use cases:
+
+- push notifications
+- email notifications
+- transactional communications
+
+Explain how the application can communicate with users through a simple API.
+
+---
+
+## Step 8 — Testing
+
+Introduce:
+
+- local testing
+- staging testing
+- end-to-end testing
+- mobile testing
+- production smoke testing
+
+The customer should be encouraged to test the complete journey before deployment.
+
+Example:
+
+Sign up → create account → perform core action → receive notification → data saved → log out → log in → data persists.
+
+---
+
+## Step 9 — App Stores
+
+iOS:
+
+- Apple Developer account
+- Xcode
+- App Store Connect
+
+Android:
+
+- Google Play Console
+- Android build pipeline
+
+The product should explain:
+
+- developer accounts
+- certificates
+- signing
+- app metadata
+- screenshots
+- privacy requirements
+- permissions
+- review process
+- app submission
+
+---
+
+## Step 10 — Launch
+
+Final launch checklist:
+
+- domain
+- website
+- production database
+- production environment variables
+- analytics
+- error monitoring
+- notifications
+- backups
+- privacy policy
+- terms
+- App Store listing
+- Google Play listing
+- final QA
+
+Output:
+
+> **A real, publicly available application.**
+
+---
+
+# 6. Website
+
+The first version of the website should be a premium SaaS/education landing page.
+
+Primary objective:
+
+**Convert visitors into customers.**
+
+Secondary objective:
+
+**Explain the 10-step methodology clearly enough that users understand why this is different from simply asking ChatGPT to build an app.**
+
+---
+
+# 7. Homepage Structure
+
+## Hero
+
+Headline:
+
+> **From idea to App Store in 10 steps.**
+
+Subheadline:
+
+> Build a real iOS, Android and web application using AI — even if you've never written a line of code.
+
+Primary CTA:
+
+**Start Building**
+
+Secondary CTA:
+
+**See How It Works**
+
+---
+
+## Problem Section
+
+Headline:
+
+> AI made coding easier.  
+> It didn't make building an app simple.
+
+Explain the fragmented tooling problem.
+
+Show the ecosystem:
+
+Claude → Cursor → GitHub → Neon → Vercel → Flutter → OneSignal → Xcode → App Store → Google Play
+
+Then explain:
+
+> We connect the dots.
+
+---
+
+# 8. The 10 Steps
+
+Create a visually engaging timeline/card system.
+
+Each step should contain:
+
+- step number
+- title
+- short explanation
+- recommended tools
+- expected output
+- estimated difficulty
+- CTA
+
+The user should be able to click each step to see more detail.
+
+---
+
+# 9. Tools
+
+Create a dedicated section explaining the recommended stack.
+
+### AI
+
+Claude
+
+### Development
+
+Cursor
+
+### Source Control
+
+GitHub
+
+### Database
+
+Neon / PostgreSQL
+
+### Hosting
+
+Vercel
+
+### Mobile
+
+Flutter
+
+### Notifications
+
+OneSignal
+
+### iOS
+
+Xcode / App Store Connect
+
+### Android
+
+Google Play Console
+
+Each tool should have:
+
+- logo
+- description
+- why we recommend it
+- link
+- approximate pricing
+- alternatives
+
+The architecture must allow tools to be changed later without rebuilding the whole website.
+
+---
+
+# 10. Interactive Product Experience
+
+The eventual product should not just be a static course.
+
+Users should be able to create an "App Project".
+
+Example:
+
+### My App
+
+**Project: Matees**
+
+Progress:
+
+**3 / 10 steps completed**
+
+---
+
+### Step 1 — Define Your Idea
+
+Questions:
+
+- What is your app?
+- Who is it for?
+- What problem does it solve?
+- What is the primary user action?
+- What are the three most important features?
+
+The system should turn these answers into an automatically generated:
+
+**Product Requirements Document**
+
+The user can then give that PRD directly to Claude.
+
+---
+
+# 11. AI Prompt Library
+
+One of the key pieces of intellectual property should be a library of high-quality prompts.
+
+Examples:
+
+### Product prompt
+
+"Turn my idea into an MVP product specification..."
+
+### Database prompt
+
+"Based on this product specification, design a production-ready PostgreSQL schema..."
+
+### Architecture prompt
+
+"Review this application architecture..."
+
+### Coding prompt
+
+"Implement this feature without changing existing functionality..."
+
+### Testing prompt
+
+"Create an end-to-end test plan..."
+
+### Debugging prompt
+
+"Analyse this error..."
+
+Prompts should be:
+
+- copyable
+- editable
+- contextual
+- version controlled
+
+---
+
+# 12. Templates
+
+Provide downloadable / copyable templates for:
+
+- PRD
+- database schema
+- user stories
+- API specification
+- app architecture
+- environment variables
+- QA checklist
+- launch checklist
+- App Store checklist
+- Google Play checklist
+
+---
+
+# 13. Progress Tracking
+
+Users should be able to mark steps as:
+
+- Not Started
+- In Progress
+- Complete
+
+Display:
+
+**Your progress: 40%**
+
+The dashboard should show:
+
+- current step
+- next action
+- outstanding tasks
+- recommended tools
+- relevant prompts
+
+---
+
+# 14. Monetisation
+
+Initial model should support multiple products.
+
+### Free
+
+- overview of 10 steps
+- basic guides
+- selected prompts
+
+### Pro
+
+Paid one-time purchase or subscription.
+
+Includes:
+
+- complete 10-step framework
+- full prompt library
+- templates
+- detailed guides
+- project dashboard
+- AI-generated PRD
+- AI-generated database schema
+- launch checklists
+
+### Premium
+
+"Build With Me"
+
+Includes:
+
+- everything in Pro
+- expert reviews
+- architecture reviews
+- troubleshooting
+- product guidance
+
+### Future
+
+Done-for-you app development.
+
+---
+
+# 15. Technical Architecture
+
+Preferred stack:
+
+### Frontend
+
+Next.js / React
+
+### Styling
+
+Tailwind CSS
+
+### Backend
+
+Next.js API routes / server actions
+
+### Database
+
+PostgreSQL / Neon
+
+### Authentication
+
+Use a modern authentication provider.
+
+### Payments
+
+Stripe
+
+### Hosting
+
+Vercel
+
+### Analytics
+
+Use a lightweight analytics solution.
+
+### CMS
+
+Initially content can be stored directly in the application/database.
+
+Architecture should allow migration to a CMS later.
+
+---
+
+# 16. Design Direction
+
+The website should feel:
+
+- premium
+- modern
+- technical
+- approachable
+- AI-native
+- credible
+
+Avoid:
+
+- generic "AI startup" gradients
+- excessive futuristic imagery
+- cheesy robots
+- stock photography
+- overly complex interfaces
+
+Think:
+
+**Apple + Linear + modern developer tooling**
+
+The user should immediately feel:
+
+> "This is a serious system for building products."
+
+---
+
+# 17. Brand Direction
+
+Working brand:
+
+**Idea2App** (idea2app.com.au)
+
+Tagline:
+
+> **From idea to App Store in 10 steps.**
+
+Alternative:
+
+> **Your idea. AI. A real app.**
+
+Alternative brand names should remain configurable.
+
+Do not hard-code the brand name throughout the application.
+
+---
+
+# 18. MVP Requirements
+
+The first version does NOT need the full platform.
+
+MVP should include:
+
+1. Marketing homepage
+2. 10-step framework
+3. Individual step pages
+4. Tool directory
+5. Prompt library
+6. Templates
+7. Pricing page
+8. Signup/login
+9. Basic user dashboard
+10. Project creation
+11. Progress tracking
+12. Stripe payment
+13. Basic CMS/content management capability
+
+---
+
+# 19. Future Features
+
+Potential future functionality:
+
+- AI product consultant
+- AI PRD generator
+- AI database designer
+- AI architecture reviewer
+- AI code reviewer
+- AI debugging assistant
+- GitHub integration
+- Cursor integration
+- project health checks
+- automated testing
+- deployment guidance
+- App Store submission assistant
+- community
+- expert marketplace
+- app templates
+- app starter repositories
+- agency / team accounts
+
+---
+
+# 20. Key Success Metric
+
+The ultimate success metric is NOT:
+
+> Number of people who read the course.
+
+It is:
+
+> **Number of users who successfully launch a real application.**
+
+Secondary metrics:
+
+- signup conversion
+- paid conversion
+- step completion
+- project completion
+- prompt usage
+- template downloads
+- percentage reaching Step 10
+- number of apps launched
+
+---
+
+# 21. Critical Product Principle
+
+The product must always optimise for:
+
+> **Getting the customer from "I have an idea" to "My app is live."**
+
+Every feature should be evaluated against this objective.
+
+Do not build unnecessary functionality simply because it is technically interesting.
+
+The product should be a guided path, not a complicated software development platform.
+
+---
+
+# 22. First Build Instruction
+
+Build the MVP website first.
+
+Do not attempt to build the complete platform immediately.
+
+**Build Pass 1 (leanest possible slice — no accounts, no payments):**
+
+1. Homepage
+2. 10-step framework overview
+3. Step detail pages
+4. Tool directory
+5. Prompt library (static/read-only)
+6. Pricing page (informational only — no live checkout yet)
+
+**Build Pass 2 (deferred until Pass 1 is validated):**
+
+7. Authentication (Clerk)
+8. Basic dashboard
+9. Project creation
+10. Progress tracking
+11. Stripe payments / live checkout
+12. Basic CMS / content management capability
+
+Use a clean, production-ready architecture.
+
+Create the database schema before implementing the application.
+
+Separate:
+
+- development
+- staging
+- production
+
+Use environment variables for all secrets.
+
+Use GitHub for source control.
+
+Use Vercel for deployment.
+
+The application should be responsive and work exceptionally well on mobile.
+
+Build the product incrementally, testing each feature before moving to the next.
+
+Do not invent unnecessary functionality.
+
+Where a product decision is unclear, prioritise:
+
+**simplicity → user outcome → scalability.**
+
+---
+
+# 23. Decisions Log
+
+Decisions confirmed with stakeholder on first PRD review:
+
+- **Brand / domain:** `idea2app.com.au` is the real brand and domain. Working brand name updated to **Idea2App** throughout this document (replacing the placeholder "Couch to App"). Brand name remains configurable in code per Section 17.
+- **First build scope:** Leanest possible first pass — marketing homepage, 10-step content, step detail pages, tool directory, and prompt library only. No auth, dashboard, project creation, or payments in Pass 1 (see Section 22).
+- **Content:** No existing copy for the 10 steps, tool directory, prompts, or templates. Draft placeholder/production-quality copy as part of the build; stakeholder to review and refine after first draft.
+- **Authentication provider:** Clerk (deferred to Build Pass 2).
+- **Analytics provider:** PostHog (product analytics — useful for tracking step-completion funnels, not just pageviews).
+- **Open / not yet decided:** CMS approach beyond "content in DB," AU-specific billing details (GST, ABN, invoicing entity), SEO/content-marketing plan, final pricing amounts.

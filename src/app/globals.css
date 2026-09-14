@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+/*
+ * Idea2App design tokens.
+ *
+ * Deliberately dark-first, single accent colour, no gradients — premium
+ * developer-tool aesthetic (Linear / Vercel / Cursor), not "AI startup".
+ */
+:root {
+  --background: #08080a;
+  --elevated: #111114;
+  --elevated-hover: #16161b;
+  --foreground: #f5f5f7;
+  --muted: #9a9aa6;
+  --muted-foreground: #6f6f7a;
+  --border: rgba(255, 255, 255, 0.09);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --accent: #6d6ef8;
+  --accent-hover: #8283fa;
+  --accent-foreground: #ffffff;
+  --accent-soft: rgba(109, 110, 248, 0.12);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-elevated: var(--elevated);
+  --color-elevated-hover: var(--elevated-hover);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-soft: var(--accent-soft);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+* {
+  border-color: var(--border);
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.mask-fade-bottom {
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
