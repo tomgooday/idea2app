@@ -1,6 +1,10 @@
 # Product Requirements Document
 ## AI App Builder — "Idea2App"
 
+> **Status: Build Pass 1 is live at [idea2app.co](https://idea2app.co).**
+> See Section 23 (Decisions Log) for what's been decided, and Section 24
+> (Implementation Status) for what's actually shipped and running.
+
 ### 1. Product Overview
 
 Build a web-based product that helps non-technical people turn an idea into a real, functioning application using modern AI development tools.
@@ -817,12 +821,12 @@ Build the MVP website first.
 
 Do not attempt to build the complete platform immediately.
 
-**Build Pass 1 (leanest possible slice — no accounts, no payments):**
+**Build Pass 1 (leanest possible slice — no accounts, no payments): ✅ Shipped, live at idea2app.co**
 
 1. Homepage
 2. 10-step framework overview
-3. Step detail pages
-4. Tool directory
+3. Step detail pages (Steps 1–2 free preview; Steps 3–10 gated — see Section 23)
+4. Tool directory, including a detail page per tool
 5. Prompt library (static/read-only)
 6. Pricing page (informational only — no live checkout yet)
 
@@ -878,3 +882,68 @@ Decisions confirmed with stakeholder on first PRD review:
 - **Open / not yet decided:** exact price points within each range, DIY/Pro checkout mechanism vs. Done With You's application/sales process, and whether Done With You should be application-gated or self-serve.
 - **Domain update:** switched from `idea2app.com.au` to **`idea2app.co`** (stakeholder now owns this domain). Updated throughout — brand name, contact email, and this document.
 - **Content gating:** the full step-by-step "what you'll do" checklist, key principle and common mistake for each step is the core paid IP of the DIY Playbook. Steps 1–2 remain fully open on the public site as a preview; Steps 3–10 show the step's overview, first checklist item, recommended tools and expected output for free, then blur/lock the remainder behind a "Get the DIY Playbook" CTA. This is a Build Pass 1 stopgap (simple constant-based gating, no real entitlement check) — real access control arrives with auth + purchases in Build Pass 2.
+
+---
+
+# 24. Implementation Status (as of 15 Sep 2026)
+
+This section documents what has actually been built and deployed, so it
+stays separate from decisions (Section 23) and original scope (Section 22).
+
+## Live
+
+- **URL:** [https://idea2app.co](https://idea2app.co) — canonical domain.
+  `www.idea2app.co` redirects to it with a 308 (permanent) at the DNS/edge
+  level, not in application code.
+- **Repository:** [github.com/tomgooday/idea2app](https://github.com/tomgooday/idea2app)
+  (`main` branch).
+- **Hosting:** Vercel project `idea2app` (team `tom-4081s-projects`),
+  connected to the GitHub repository — every push to `main` auto-deploys
+  to production. No staging environment/branch deploys configured yet
+  (Build Pass 2 concern, once there's a database to separate).
+- **DNS:** registered with a third-party registrar (GoDaddy), nameservers
+  unchanged (`ns03`/`ns04.domaincontrol.com`). Apex has a single `A` record
+  → `76.76.21.21` (Vercel). `www` is a `CNAME` → `idea2app.co`. SSL is
+  auto-provisioned by Vercel.
+
+## Stack as built
+
+- **Framework:** Next.js 16 (App Router, Turbopack), TypeScript.
+- **Styling:** Tailwind CSS v4, dark-first design system (no light mode
+  yet), single accent colour, no gradients/stock imagery — per Section 16.
+- **Icons:** `lucide-react`.
+- **Cache Components:** not enabled (`cacheComponents` left off in
+  `next.config.ts`) — every route is fully static for Build Pass 1, so the
+  simpler default caching model is sufficient. Revisit if/when Build Pass 2
+  introduces per-user/dynamic data.
+- **Content model:** no CMS or database yet. All content (steps, tools,
+  prompts, pricing) lives as typed data in `src/lib/data/*.ts`, matching
+  the "basic CMS/content management capability" placeholder from Section
+  18 — intentionally simple until Build Pass 2.
+
+## Routes shipped (28 statically prerendered pages)
+
+- `/` — homepage
+- `/steps` — 10-step framework overview
+- `/steps/[slug]` — one detail page per step (10 pages)
+- `/tools` — tool directory
+- `/tools/[slug]` — one detail page per tool (10 pages)
+- `/prompts` — prompt library (copy-to-clipboard)
+- `/pricing` — DIY / PRO / Done With You, plus a "Done For You" coming-later callout
+
+## Known gaps / not yet done
+
+- No live checkout — pricing CTAs open a pre-filled `mailto:hello@idea2app.co`
+  as an interest-registration placeholder.
+- No auth, dashboard, project creation, or progress tracking (Build Pass 2).
+- Content gating (Section 23) is a simple constant, not a real entitlement
+  check — bypassable via page source. Fine as a soft deterrent for now;
+  needs real access control once purchases exist.
+- No staging environment — Neon/database separation from Section 5 and 15
+  hasn't started, since there's no database yet.
+- No analytics installed yet (PostHog was the decision — see Section 23 —
+  but it isn't wired into the codebase yet).
+- Local git identity used for commits is a placeholder (`Tom Gooday` /
+  `tom@idea2app.co`) — fine for now since GitHub auth for pushes goes
+  through `gh`, not git commit identity, but worth setting properly if
+  this matters for commit attribution later.
