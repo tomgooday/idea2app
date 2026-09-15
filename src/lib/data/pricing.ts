@@ -1,3 +1,5 @@
+import { siteConfig } from "@/lib/config";
+
 export type PricingPlan = {
   slug: "diy" | "pro" | "done-with-you" | "done-for-you";
   /** Product name, e.g. "DIY". */
@@ -36,7 +38,7 @@ export const pricingPlans: PricingPlan[] = [
       "Lifetime access to updates",
     ],
     cta: "Get the Playbook",
-    href: "mailto:hello@idea2app.co?subject=DIY%20Playbook%20interest",
+    href: `mailto:${siteConfig.supportEmail}?subject=DIY%20Playbook%20interest`,
   },
   {
     slug: "pro",
@@ -54,7 +56,7 @@ export const pricingPlans: PricingPlan[] = [
       "Project dashboard with progress tracking",
     ],
     cta: "Join Pro",
-    href: "mailto:hello@idea2app.co?subject=Pro%20interest",
+    href: `mailto:${siteConfig.supportEmail}?subject=Pro%20interest`,
     highlighted: true,
   },
   {
@@ -73,7 +75,7 @@ export const pricingPlans: PricingPlan[] = [
       "A real, launched app at the end",
     ],
     cta: "Apply Now",
-    href: "mailto:hello@idea2app.co?subject=Done%20With%20You%20application",
+    href: `mailto:${siteConfig.supportEmail}?subject=Done%20With%20You%20application`,
   },
   {
     slug: "done-for-you",
@@ -88,7 +90,7 @@ export const pricingPlans: PricingPlan[] = [
       "For founders who'd rather pay for the outcome than learn the process",
     ],
     cta: "Join the Waitlist",
-    href: "mailto:hello@idea2app.co?subject=Done%20For%20You%20waitlist",
+    href: `mailto:${siteConfig.supportEmail}?subject=Done%20For%20You%20waitlist`,
     comingSoon: true,
   },
 ];

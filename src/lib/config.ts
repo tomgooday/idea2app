@@ -14,6 +14,8 @@ export const siteConfig = {
     "Idea2App packages the tools, prompts, templates and technical knowledge you need to turn an idea into a real iOS, Android and web app using AI - even if you've never written a line of code. It's the blueprint to build, launch and maintain your own app, not another hosted prototype.",
   proposition:
     "Not another AI prototype. The blueprint to launch a real app.",
+  /** Single source of truth for the contact/support email - see PRD Section 23. */
+  supportEmail: "support@idea2app.co",
   social: {
     twitter: "",
     github: "",
