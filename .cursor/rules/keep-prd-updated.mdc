@@ -1,0 +1,40 @@
+---
+description: Keep the PRD's Implementation Status and Decisions Log current after every meaningful change
+alwaysApply: true
+---
+
+# Keep the PRD in sync
+
+`AI App Builder — Product Requirements Document.md` is the source of truth
+for this project. Update it as part of the same piece of work whenever
+something changes — don't wait to be asked.
+
+## Section 24 — Implementation Status
+
+Update this section whenever you:
+
+- Ship or remove a route/page
+- Change the stack, a dependency, or infra (hosting, DNS, domain, env vars)
+- Deploy to production, or change what's live
+- Add/remove an item from "Known gaps / not yet done" as it gets built
+
+Keep it factual and current-state only — no history. If something moves
+from "known gap" to "shipped," delete it from the gaps list rather than
+leaving stale notes.
+
+## Section 23 — Decisions Log
+
+Append an entry whenever the stakeholder makes a product, scope, pricing,
+brand, or architecture decision — especially anything that supersedes
+earlier PRD sections (call out what it supersedes, don't silently rewrite
+history).
+
+## Workflow
+
+1. Make the code/infra change.
+2. Update the relevant PRD section(s) in the same commit.
+3. Commit and push both together with a clear message.
+
+If a change is trivial/cosmetic (copy tweaks, styling) and doesn't affect
+scope, stack, or what's live, skip the PRD update — use judgment, don't
+pad the document.
