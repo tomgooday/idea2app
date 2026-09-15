@@ -71,14 +71,25 @@ dashboard, progress tracking) justify the engineering time.
 
 - [ ] Replace the `mailto:` pricing CTA with Lemon Squeezy hosted checkout
       for DIY and PRO. This is the single biggest unlock — it turns every
-      sale from a manual email thread into an automatic transaction.
+      sale from a manual email thread into an automatic transaction. **Code
+      is ready** (`getCheckoutUrl` in `src/lib/lemonsqueezy.ts` — pricing.ts
+      already prefers it over `mailto:` whenever it returns a link); still
+      blocked on the store/products existing so it has a real link to
+      return. Stakeholder currently only has Lemon Squeezy sandbox/test-mode
+      API keys — no store or products created yet.
 - [x] Pick a merchant of record — **Lemon Squeezy** (see PRD Section 23).
       Still needed before the checkout above can go live: the store
       created, DIY/PRO set up as products with fixed prices (not ranges),
       and `support@idea2app.co` set as the store's support/receipt email.
 - [ ] Automate fulfilment: the purchase webhook should grant access to
       gated step content instantly (Notion / Gumroad / a gated route +
-      magic link) — no manual delivery per sale.
+      magic link) — no manual delivery per sale. **Partially built:**
+      `/access` (a gated route, not a magic link) verifies a paid order via
+      the Lemon Squeezy API and sets a signed access cookie - see PRD
+      Section 24. Still needs: the DIY product's Redirect URL set to
+      `/access?order_id=[order_id]` in the Lemon Squeezy dashboard once it
+      exists, and the gated step/prompt pages actually checking the cookie
+      (they currently only use the old constant-based gate).
 - [ ] Add an email capture (free checklist PDF or a bonus prompt) before
       the paywall, so a visitor who isn't ready to buy doesn't just leave
       (see `04-conversion-funnel-and-measurement.md` for why this matters).

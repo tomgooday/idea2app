@@ -43,7 +43,7 @@ export function PricingCard({ plan }: { plan: PricingPlan }) {
 
       <Button
         href={plan.href}
-        external={plan.href.startsWith("mailto:")}
+        external={!plan.href.startsWith("/")}
         variant={plan.highlighted ? "primary" : "secondary"}
         className="w-full"
       >

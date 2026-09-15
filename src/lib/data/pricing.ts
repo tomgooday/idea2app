@@ -1,4 +1,5 @@
 import { siteConfig } from "@/lib/config";
+import { getCheckoutUrl } from "@/lib/lemonsqueezy";
 
 export type PricingPlan = {
   slug: "diy" | "pro" | "done-with-you" | "done-for-you";
@@ -40,7 +41,9 @@ export const pricingPlans: PricingPlan[] = [
       "Lifetime access to updates",
     ],
     cta: "Get the Playbook",
-    href: `mailto:${siteConfig.supportEmail}?subject=DIY%20Playbook%20interest`,
+    href:
+      getCheckoutUrl("diy") ??
+      `mailto:${siteConfig.supportEmail}?subject=DIY%20Playbook%20interest`,
   },
   {
     slug: "pro",
@@ -58,7 +61,9 @@ export const pricingPlans: PricingPlan[] = [
       "Project dashboard with progress tracking",
     ],
     cta: "Join Pro",
-    href: `mailto:${siteConfig.supportEmail}?subject=Pro%20interest`,
+    href:
+      getCheckoutUrl("pro") ??
+      `mailto:${siteConfig.supportEmail}?subject=Pro%20interest`,
     highlighted: true,
   },
   {

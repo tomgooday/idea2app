@@ -929,9 +929,12 @@ stays separate from decisions (Section 23) and original scope (Section 22).
   `public/brand/` and `src/app/icon.png` / `src/app/apple-icon.png`
   (favicon, apple touch icon). Header/footer use `src/components/brand/logo.tsx`.
 - **Cache Components:** not enabled (`cacheComponents` left off in
-  `next.config.ts`) — every route is fully static for Build Pass 1, so the
-  simpler default caching model is sufficient. Revisit if/when Build Pass 2
-  introduces per-user/dynamic data.
+  `next.config.ts`) — every page route is fully static for Build Pass 1,
+  so the simpler default caching model is sufficient. The one exception is
+  `/access` (a Route Handler, not a page), which is inherently
+  request-time since it reads a query param and sets a cookie - see "Lemon
+  Squeezy integration" below. Revisit if/when Build Pass 2 introduces
+  per-user/dynamic page data.
 - **Content model:** no CMS or database yet. All content (steps, tools,
   prompts, pricing) lives as typed data in `src/lib/data/*.ts`, matching
   the "basic CMS/content management capability" placeholder from Section
@@ -943,7 +946,7 @@ stays separate from decisions (Section 23) and original scope (Section 22).
   (`src/components/tool-logo.tsx`) now also appear on `/steps` (tool
   chips) and `/steps/[slug]` (recommended tools), matching `/tools`.
 
-## Routes shipped (30 statically prerendered pages)
+## Routes shipped (30 statically prerendered pages, plus 1 dynamic route)
 
 - `/` — homepage
 - `/steps` — 10-step framework overview
@@ -954,14 +957,47 @@ stays separate from decisions (Section 23) and original scope (Section 22).
 - `/pricing` — DIY / PRO / Done With You, plus a "Done For You" coming-later callout
 - `/icon.png`, `/apple-icon.png` — favicon and Apple touch icon (Next.js
   metadata file convention), generated from the real logo
+- `/access` (dynamic, not statically prerendered) — Lemon Squeezy
+  post-checkout landing route. Verifies the `order_id` query param via the
+  Lemon Squeezy API, then grants access - see "Lemon Squeezy integration
+  (code shipped, not live)" below. Not linked from anywhere yet; only
+  reachable via a Lemon Squeezy product's configured redirect URL.
+
+## Lemon Squeezy integration (code shipped, not live)
+
+The checkout/access plumbing decided in Section 23 is built, but dormant
+until the store exists:
+
+- `src/lib/lemonsqueezy.ts` — `getCheckoutUrl(plan)` builds a hosted buy
+  link from `LEMONSQUEEZY_STORE_SLUG` + variant ID env vars (returns
+  `null`, causing pricing.ts to fall back to `mailto:`, if unset);
+  `getOrder(orderId)` looks up an order via the API using
+  `LEMONSQUEEZY_API_KEY`.
+- `src/lib/access-token.ts` — signs/verifies the stateless access-grant
+  cookie (`i2a_access`) using `ACCESS_TOKEN_SECRET` (HMAC-SHA256, no
+  external JWT library).
+- `src/app/access/route.ts` — the `/access` route above.
+- None of the required env vars (`LEMONSQUEEZY_API_KEY`,
+  `LEMONSQUEEZY_STORE_SLUG`, `LEMONSQUEEZY_STORE_ID`,
+  `LEMONSQUEEZY_DIY_VARIANT_ID`, `LEMONSQUEEZY_PRO_VARIANT_ID`,
+  `ACCESS_TOKEN_SECRET`) are set anywhere yet - stakeholder currently has
+  Lemon Squeezy **test-mode (sandbox) API keys only**; the store and
+  DIY/PRO products haven't been created. See `.env.example` for the full
+  list and what each does.
+- Not yet done once the store exists: set each product's Redirect
+  URL/receipt button link in the Lemon Squeezy dashboard to
+  `https://idea2app.co/access?order_id=[order_id]`; a webhook
+  (`LEMONSQUEEZY_WEBHOOK_SECRET`) for anything beyond the redirect flow
+  (e.g. Discord auto-invite on PRO purchase - still an open decision, see
+  the growth playbook doc); actually gating step/prompt content behind
+  the access cookie instead of the current constant-based gate.
 
 ## Known gaps / not yet done
 
-- No live checkout — pricing CTAs open a pre-filled
-  `mailto:support@idea2app.co` as an interest-registration placeholder.
-  Merchant of record is decided (Lemon Squeezy, see Section 23) but the
-  store/products aren't created yet, so DIY/PRO don't have real checkout
-  links to wire in.
+- No live checkout — pricing CTAs still open a pre-filled
+  `mailto:support@idea2app.co` as an interest-registration placeholder,
+  since the Lemon Squeezy store/products don't exist yet. The
+  integration code is ready (see above); it just has nothing to point at.
 - No auth, dashboard, project creation, or progress tracking (Build Pass 2).
 - Content gating (Section 23) is a simple constant, not a real entitlement
   check — bypassable via page source. Fine as a soft deterrent for now;
