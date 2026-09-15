@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { siteConfig } from "@/lib/config";
 import { Container } from "@/components/ui/container";
+import { Logo } from "@/components/brand/logo";
 
 const columns = [
   {
@@ -26,17 +27,11 @@ export function SiteFooter() {
       <Container className="py-14">
         <div className="flex flex-col justify-between gap-12 md:flex-row">
           <div className="max-w-sm">
-            <Link
-              href="/"
-              className="flex items-center gap-2 text-[15px] font-semibold tracking-tight text-foreground"
-            >
-              <span className="flex h-6 w-6 items-center justify-center rounded-md bg-accent text-[13px] font-bold text-accent-foreground">
-                {siteConfig.name.charAt(0)}
-              </span>
-              {siteConfig.name}
+            <Link href="/" aria-label="Idea2App home">
+              <Logo />
             </Link>
             <p className="mt-3 text-sm leading-relaxed text-muted">
-              {siteConfig.tagline} A guided path from idea to App Store —
+              {siteConfig.tagline} A guided path from idea to App Store -
               not another AI-generates-your-app promise.
             </p>
           </div>

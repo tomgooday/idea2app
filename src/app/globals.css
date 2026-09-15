@@ -1,24 +1,37 @@
 @import "tailwindcss";
 
 /*
- * Idea2App design tokens.
+ * Idea2App design tokens - per "Idea2App Brand & Design System" spec.
  *
- * Deliberately dark-first, single accent colour, no gradients — premium
- * developer-tool aesthetic (Linear / Vercel / Cursor), not "AI startup".
+ * "Paper" light theme: warm off-white background, ink typography, a single
+ * Idea Blue accent. Premium developer-tool aesthetic (Linear / Vercel /
+ * Stripe), with a hand-drawn "squiggle" accent layer used sparingly.
  */
 :root {
-  --background: #08080a;
-  --elevated: #111114;
-  --elevated-hover: #16161b;
-  --foreground: #f5f5f7;
-  --muted: #9a9aa6;
-  --muted-foreground: #6f6f7a;
-  --border: rgba(255, 255, 255, 0.09);
-  --border-strong: rgba(255, 255, 255, 0.16);
-  --accent: #6d6ef8;
-  --accent-hover: #8283fa;
+  --background: #fafaf9; /* Paper */
+  --elevated: #ffffff; /* White - cards */
+  --elevated-hover: #eff6ff; /* Soft Blue - hover states */
+  --foreground: #111827; /* Ink - primary text */
+  --muted: #374151; /* Charcoal - secondary text */
+  --muted-foreground: #9ca3af; /* Pencil Grey - metadata, labels */
+  --border: rgba(17, 24, 39, 0.08);
+  --border-strong: rgba(17, 24, 39, 0.14);
+  --accent: #2563eb; /* Idea Blue */
+  --accent-hover: #1d4ed8; /* Idea Blue Dark */
   --accent-foreground: #ffffff;
-  --accent-soft: rgba(109, 110, 248, 0.12);
+  --accent-soft: #eff6ff; /* Soft Blue */
+  --pencil: #9ca3af;
+
+  /* Occasional dark section (final CTA, code aesthetic) */
+  --ink: #111827;
+  --ink-foreground: #f5f5f7;
+  --ink-muted: #b6bac2;
+  --ink-border: rgba(255, 255, 255, 0.12);
+
+  /* Code panels stay dark regardless of the surrounding theme. */
+  --code-bg: #0b1220;
+  --code-foreground: #e5e7eb;
+  --code-border: rgba(255, 255, 255, 0.08);
 }
 
 @theme inline {
@@ -34,12 +47,19 @@
   --color-accent-hover: var(--accent-hover);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent-soft: var(--accent-soft);
+  --color-pencil: var(--pencil);
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-border: var(--ink-border);
+  --color-code-bg: var(--code-bg);
+  --color-code-foreground: var(--code-foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 html {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
@@ -60,13 +80,37 @@ body {
   text-wrap: balance;
 }
 
+/* Faint technical grid on the paper background - ink lines, not white. */
 .bg-grid {
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    linear-gradient(to right, rgba(17, 24, 39, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(17, 24, 39, 0.05) 1px, transparent 1px);
   background-size: 44px 44px;
 }
 
 .mask-fade-bottom {
   mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+
+/* Cards should feel like product interfaces: thin border + a whisper of
+   shadow, applied globally so individual components don't need to opt in. */
+.bg-elevated {
+  box-shadow: 0 1px 2px rgba(17, 24, 39, 0.04), 0 1px 1px rgba(17, 24, 39, 0.02);
+}
+
+/* Dark "code aesthetic" panel, used for prompt/code blocks regardless of
+   the surrounding light theme - see Brand & Design System, Section 24. */
+.code-panel {
+  background: var(--code-bg);
+  color: var(--code-foreground);
+  border: 1px solid var(--code-border);
+}
+
+/* Occasional dark section (final CTA, technical/architecture callouts). */
+.section-dark {
+  background: var(--ink);
+  color: var(--ink-foreground);
+}
+.section-dark .text-muted {
+  color: var(--ink-muted);
 }

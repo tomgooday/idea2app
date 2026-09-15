@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 /**
  * Shows the first checklist item in full (a real preview), then blurs the
  * rest behind a paywall CTA. Used on step detail pages for steps outside
- * the free preview range — see `isStepFree` in lib/data/steps.ts.
+ * the free preview range - see `isStepFree` in lib/data/steps.ts.
  */
 export function LockedChecklist({ items }: { items: string[] }) {
   const [first, ...rest] = items;

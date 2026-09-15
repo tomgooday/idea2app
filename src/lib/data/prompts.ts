@@ -13,6 +13,8 @@ export type Prompt = {
   description: string;
   relatedStep: number;
   prompt: string;
+  /** True for the single free sample shown in full on the public site. */
+  free?: boolean;
 };
 
 export const prompts: Prompt[] = [
@@ -21,8 +23,9 @@ export const prompts: Prompt[] = [
     category: "Product",
     title: "Turn my idea into an MVP spec",
     description:
-      "Use this first — it converts a rough idea into a structured product specification you can hand to every later step.",
+      "Use this first - it converts a rough idea into a structured product specification you can hand to every later step.",
     relatedStep: 1,
+    free: true,
     prompt: `Turn my idea into an MVP product specification.
 
 My idea: [describe your app idea in a sentence or two]
@@ -34,7 +37,7 @@ Please produce:
 4. 3-5 key user journeys
 5. A list of functional requirements in plain language
 
-Be ruthless about scope — cut anything that isn't required for the MVP to be useful, and call out what you cut and why.`,
+Be ruthless about scope - cut anything that isn't required for the MVP to be useful, and call out what you cut and why.`,
   },
   {
     slug: "postgres-schema-design",
@@ -74,14 +77,14 @@ Please assess:
 3. Whether the database and API design match how the frontend actually uses them
 4. Anything that will become hard to change later if left as-is
 
-Be specific and prioritise the 2-3 issues that matter most — I don't need an exhaustive list.`,
+Be specific and prioritise the 2-3 issues that matter most - I don't need an exhaustive list.`,
   },
   {
     slug: "implement-feature-safely",
     category: "Coding",
     title: "Implement this feature without breaking anything",
     description:
-      "The core prompt for Step 4 — use it every time you ask the AI coding agent to build something new.",
+      "The core prompt for Step 4 - use it every time you ask the AI coding agent to build something new.",
     relatedStep: 4,
     prompt: `Implement this feature without changing existing functionality.
 
@@ -121,7 +124,7 @@ Please produce:
     category: "Debugging",
     title: "Analyse this error",
     description:
-      "Use whenever something breaks and you're not sure why — works for build errors, runtime errors, or unexpected behaviour.",
+      "Use whenever something breaks and you're not sure why - works for build errors, runtime errors, or unexpected behaviour.",
     relatedStep: 4,
     prompt: `Analyse this error and help me fix it.
 
@@ -138,6 +141,10 @@ Please:
 4. Tell me if this is a symptom of a deeper issue I should address`,
   },
 ];
+
+export function isPromptFree(slug: string): boolean {
+  return prompts.find((p) => p.slug === slug)?.free ?? false;
+}
 
 export function getPromptsByCategory(): Record<PromptCategory, Prompt[]> {
   return prompts.reduce((acc, prompt) => {

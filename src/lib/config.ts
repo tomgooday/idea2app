@@ -11,9 +11,9 @@ export const siteConfig = {
   url: "https://idea2app.co",
   tagline: "From idea to App Store in 10 steps.",
   description:
-    "Idea2App packages the tools, prompts, templates and technical knowledge you need to turn an idea into a real iOS, Android and web app using AI — even if you've never written a line of code.",
+    "Idea2App packages the tools, prompts, templates and technical knowledge you need to turn an idea into a real iOS, Android and web app using AI - even if you've never written a line of code. It's the blueprint to build, launch and maintain your own app, not another hosted prototype.",
   proposition:
-    "You have an idea. We'll show you how to turn it into a real app.",
+    "Not another AI prototype. The blueprint to launch a real app.",
   social: {
     twitter: "",
     github: "",

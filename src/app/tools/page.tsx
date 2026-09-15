@@ -7,7 +7,7 @@ import { getToolsByCategory } from "@/lib/data/tools";
 export const metadata: Metadata = {
   title: "Tool Directory",
   description:
-    "The recommended stack for building a real app with AI — what each tool does, why we recommend it, pricing, and alternatives.",
+    "The recommended stack for building a real app with AI - what each tool does, why we recommend it, pricing, and alternatives.",
 };
 
 export default function ToolsPage() {

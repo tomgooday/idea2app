@@ -10,7 +10,7 @@ import { getToolBySlug } from "@/lib/data/tools";
 export const metadata: Metadata = {
   title: "The 10 Steps",
   description:
-    "The complete framework for turning an idea into a real, launched application — idea, prototype, database, code, backend, mobile, testing, app stores, and launch.",
+    "The complete framework for turning an idea into a real, launched application - idea, prototype, database, code, backend, mobile, testing, app stores, and launch.",
 };
 
 export default function StepsPage() {
@@ -22,7 +22,7 @@ export default function StepsPage() {
             align="center"
             eyebrow="The Framework"
             title="Idea → Prototype → Database → Code → Backend → Mobile → Testing → App Stores → Launch"
-            description="Ten steps. Each one tells you exactly what to build, what tool to use, and what to hand the AI. Steps 1–2 are open to everyone — the full walkthrough for Steps 3–10 is part of the DIY Playbook."
+            description="Ten steps. Each one tells you exactly what to build, what tool to use, and what to hand the AI. Step 1 is open to everyone - the full walkthrough for Steps 2-10, including the exact prompts, is part of the DIY Playbook."
           />
         </Container>
       </section>

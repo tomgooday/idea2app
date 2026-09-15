@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { siteConfig } from "@/lib/config";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
+import { Logo } from "@/components/brand/logo";
 
 const navLinks = [
   { href: "/steps", label: "The 10 Steps" },
@@ -14,14 +14,8 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
       <Container className="flex h-16 items-center justify-between">
-        <Link
-          href="/"
-          className="flex items-center gap-2 text-[15px] font-semibold tracking-tight text-foreground"
-        >
-          <span className="flex h-6 w-6 items-center justify-center rounded-md bg-accent text-[13px] font-bold text-accent-foreground">
-            {siteConfig.name.charAt(0)}
-          </span>
-          {siteConfig.name}
+        <Link href="/" aria-label="Idea2App home">
+          <Logo />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">

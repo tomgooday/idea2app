@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { Step } from "@/lib/data/steps";
 import { Badge } from "@/components/ui/badge";
+import { SquiggleCircle } from "@/components/brand/squiggle";
 
 export function StepCard({ step }: { step: Step }) {
   return (
@@ -10,7 +11,8 @@ export function StepCard({ step }: { step: Step }) {
       className="group relative flex flex-col gap-4 rounded-2xl border border-border bg-elevated p-6 transition-colors duration-150 hover:border-border-strong hover:bg-elevated-hover"
     >
       <div className="flex items-start justify-between">
-        <span className="font-mono text-sm text-muted-foreground">
+        <span className="relative inline-flex h-9 w-9 items-center justify-center font-mono text-sm text-muted-foreground">
+          <SquiggleCircle className="text-border-strong opacity-0 transition-opacity duration-150 group-hover:opacity-100" />
           {String(step.number).padStart(2, "0")}
         </span>
         <Badge>{step.difficulty}</Badge>

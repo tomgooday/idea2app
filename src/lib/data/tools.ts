@@ -13,8 +13,8 @@ export type Tool = {
   slug: string;
   name: string;
   category: ToolCategory;
-  /** Lucide icon name, rendered by <ToolIcon />. */
-  icon: string;
+  /** Filename in /public/logos - the tool's real logo, rendered by <ToolLogo />. */
+  logo: string;
   description: string;
   why: string;
   link: string;
@@ -31,10 +31,10 @@ export const tools: Tool[] = [
     slug: "claude",
     name: "Claude",
     category: "AI",
-    icon: "Sparkles",
+    logo: "claude.svg",
     description:
       "The large language model that acts as your product thinking partner and coding collaborator throughout the framework.",
-    why: "Strong reasoning for product specs, database design and code — and it pairs directly with Cursor.",
+    why: "Strong reasoning for product specs, database design and code - and it pairs directly with Cursor.",
     link: "https://claude.ai",
     pricing: "Free tier available · Pro from ~US$20/mo",
     alternatives: ["ChatGPT", "Gemini"],
@@ -50,7 +50,7 @@ export const tools: Tool[] = [
     slug: "cursor",
     name: "Cursor",
     category: "Development",
-    icon: "Code2",
+    logo: "cursor.png",
     description:
       "An AI-native code editor where you and an AI coding agent build your application together, feature by feature.",
     why: "Purpose-built for working with AI coding agents across a full codebase, not just single files.",
@@ -62,17 +62,17 @@ export const tools: Tool[] = [
       "Install Cursor and open your project's GitHub repository",
       "Give it your product spec and database schema as context before building anything",
       "Ask it to implement one feature at a time, not the whole app in one prompt",
-      "Review every diff before accepting — you're the reviewer, not just the requester",
+      "Review every diff before accepting - you're the reviewer, not just the requester",
     ],
   },
   {
     slug: "github",
     name: "GitHub",
     category: "Source Control",
-    icon: "GitBranch",
+    logo: "github.svg",
     description:
       "Where your code lives, versioned and backed up, and where Vercel deploys from.",
-    why: "The standard for source control — required by almost every hosting and CI tool you'll use.",
+    why: "The standard for source control - required by almost every hosting and CI tool you'll use.",
     link: "https://github.com",
     pricing: "Free for individuals and small teams",
     alternatives: ["GitLab", "Bitbucket"],
@@ -88,9 +88,9 @@ export const tools: Tool[] = [
     slug: "neon",
     name: "Neon (PostgreSQL)",
     category: "Database",
-    icon: "Database",
+    logo: "neon.png",
     description:
-      "A serverless PostgreSQL database with instant branching — perfect for separate development, staging and production databases.",
+      "A serverless PostgreSQL database with instant branching - perfect for separate development, staging and production databases.",
     why: "Database branching makes it trivial to keep environments separate without running your own infrastructure.",
     link: "https://neon.tech",
     pricing: "Free tier available · usage-based pricing beyond that",
@@ -107,7 +107,7 @@ export const tools: Tool[] = [
     slug: "vercel",
     name: "Vercel",
     category: "Hosting",
-    icon: "Rocket",
+    logo: "vercel.svg",
     description:
       "Hosting, deployment, environment variables and server infrastructure for your application.",
     why: "Deep integration with Next.js and GitHub means every push can deploy automatically, with previews for every change.",
@@ -126,7 +126,7 @@ export const tools: Tool[] = [
     slug: "flutter",
     name: "Flutter",
     category: "Mobile",
-    icon: "Smartphone",
+    logo: "flutter.svg",
     description:
       "A single codebase that compiles to native iOS, Android and web apps.",
     why: "The most mature option for shipping one codebase to every platform without maintaining three separate apps.",
@@ -145,9 +145,9 @@ export const tools: Tool[] = [
     slug: "react-native",
     name: "React Native",
     category: "Mobile",
-    icon: "Smartphone",
+    logo: "react-native.svg",
     description:
-      "A cross-platform mobile framework built on React — a strong alternative to Flutter, especially if your team already knows React.",
+      "A cross-platform mobile framework built on React - a strong alternative to Flutter, especially if your team already knows React.",
     why: "Recommended as an alternative when you or your AI coding agent are already deep in a React/Next.js codebase.",
     link: "https://reactnative.dev",
     pricing: "Free and open source",
@@ -164,10 +164,10 @@ export const tools: Tool[] = [
     slug: "onesignal",
     name: "OneSignal",
     category: "Notifications",
-    icon: "Bell",
+    logo: "onesignal.png",
     description:
       "Push notifications, email and transactional communications through one simple API.",
-    why: "Avoids building your own notification infrastructure — connects in an afternoon, not a sprint.",
+    why: "Avoids building your own notification infrastructure - connects in an afternoon, not a sprint.",
     link: "https://onesignal.com",
     pricing: "Free tier available · usage-based pricing beyond that",
     alternatives: ["Firebase Cloud Messaging", "Resend"],
@@ -183,10 +183,10 @@ export const tools: Tool[] = [
     slug: "xcode",
     name: "Xcode / App Store Connect",
     category: "iOS",
-    icon: "Apple",
+    logo: "xcode.svg",
     description:
       "Apple's toolchain for building, signing and submitting your app to the iOS App Store.",
-    why: "Required by Apple for iOS builds and submissions — there's no way around it, so we make it painless.",
+    why: "Required by Apple for iOS builds and submissions - there's no way around it, so we make it painless.",
     link: "https://developer.apple.com/xcode/",
     pricing: "Apple Developer Program: US$99/year",
     alternatives: [],
@@ -202,10 +202,10 @@ export const tools: Tool[] = [
     slug: "google-play-console",
     name: "Google Play Console",
     category: "Android",
-    icon: "PlayCircle",
+    logo: "google-play-console.png",
     description:
       "Google's platform for building, signing and submitting your Android app to Google Play.",
-    why: "Required by Google for Android distribution — we walk you through the build pipeline and submission checklist.",
+    why: "Required by Google for Android distribution - we walk you through the build pipeline and submission checklist.",
     link: "https://play.google.com/console",
     pricing: "One-time US$25 registration fee",
     alternatives: [],

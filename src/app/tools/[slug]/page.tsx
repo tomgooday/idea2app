@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Check } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
-import { Icon } from "@/components/icon";
+import { ToolLogo } from "@/components/tool-logo";
 import { getAdjacentTools, getToolBySlug, tools } from "@/lib/data/tools";
 import { steps } from "@/lib/data/steps";
 
@@ -47,9 +47,7 @@ export default async function ToolDetailPage({
           </Link>
 
           <div className="mt-6 flex items-center gap-4">
-            <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-accent-soft text-accent">
-              <Icon name={tool.icon} className="h-7 w-7" />
-            </span>
+            <ToolLogo tool={tool} size="md" className="rounded-2xl" />
             <div>
               <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
                 {tool.category}
@@ -108,7 +106,7 @@ export default async function ToolDetailPage({
                   </h2>
                   <p className="mt-3 leading-relaxed text-muted">
                     {tool.alternatives.join(", ")} are reasonable substitutes
-                    if you have a strong reason to use them — the framework
+                    if you have a strong reason to use them - the framework
                     doesn&apos;t lock you into any single tool.
                   </p>
                 </div>

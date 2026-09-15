@@ -882,6 +882,11 @@ Decisions confirmed with stakeholder on first PRD review:
 - **Open / not yet decided:** exact price points within each range, DIY/Pro checkout mechanism vs. Done With You's application/sales process, and whether Done With You should be application-gated or self-serve.
 - **Domain update:** switched from `idea2app.com.au` to **`idea2app.co`** (stakeholder now owns this domain). Updated throughout — brand name, contact email, and this document.
 - **Content gating:** the full step-by-step "what you'll do" checklist, key principle and common mistake for each step is the core paid IP of the DIY Playbook. Steps 1–2 remain fully open on the public site as a preview; Steps 3–10 show the step's overview, first checklist item, recommended tools and expected output for free, then blur/lock the remainder behind a "Get the DIY Playbook" CTA. This is a Build Pass 1 stopgap (simple constant-based gating, no real entitlement check) — real access control arrives with auth + purchases in Build Pass 2.
+- **Tighter content gating (supersedes the gating decision above):** the site was giving away too much of the paid IP for free. Free preview is now just **Step 1** (was Steps 1–2) — Steps 2–10 show only the overview, first checklist item, recommended tools and expected output, with the rest locked. The prompt library shows exactly **one full prompt free** (the MVP spec prompt); all other prompts show their title/description with the prompt body blurred/locked behind a "Get the DIY Playbook" CTA. Same Build Pass 1 caveat applies — this is a soft, page-source-bypassable deterrent, not real entitlement.
+- **USP repositioning vs. AI prototype tools (Lovable, Bolt, Base44, etc.):** these tools produce a hosted prototype inside their own sandbox. Idea2App's differentiator is that it gives the founder the blueprint to build, launch and **maintain** a real app themselves — their own codebase, database and hosting, with no platform lock-in or usage ceiling, and a real path to the App Store and Google Play. The homepage hero subheadline and a new "A prototype is not a product" comparison section (naming Lovable/Bolt/Base44 once) now carry this directly, rather than leaving it implicit. A matching FAQ entry was added to the pricing page.
+- **Copy style:** em dashes (`—`) removed from all customer-facing site copy and replaced with hyphens (`-`). Internal docs (this PRD, README, AGENTS.md) are unaffected.
+- **Real tool logos (replaces generic Lucide icons in the tool directory):** each of the 10 tools in `src/lib/data/tools.ts` now shows its actual brand logo (`public/logos/*`) instead of a generic outline icon, rendered via `src/components/tool-logo.tsx`. Sourced from official/authoritative locations per tool: `simple-icons` (with each brand's official hex baked in) for Claude, GitHub, Vercel, Flutter, React (used for React Native) and Xcode; the tool's own site assets for Cursor (their app-icon PNG) and OneSignal (their SVG mark, rasterised); Neon's GitHub org avatar; and a high-resolution Wikimedia SVG for the colourful Google Play triangle (Google's own favicon was only 32px). The old `src/components/icon.tsx` (Lucide wrapper) was removed as it's no longer used anywhere.
+- **Brand & Design System adopted (supersedes the "dark-first" styling decision in Section 24):** implemented the palette, typography scale and logo from `Idea2App Brand & Design System — Cursor Specification.md`. The site moved from a dark-first theme to the spec's light "paper" theme (`#FAFAF9` background, `#111827` ink text, `#2563EB` Idea Blue accent), since the design system explicitly calls for the paper/ink/blue palette rather than dark mode. Implemented by re-pointing the existing semantic colour tokens in `globals.css` (`background`, `elevated`, `foreground`, `muted`, `accent`, etc.) rather than rewriting components, so the retheme is a token-level change. Added: the real logo (cropped from `Idea2App_Logo.png` into an icon mark used in the header, footer and as the site favicon/apple-touch-icon; the wordmark is rendered as real text with the "2" in accent blue, per Section 4 of the spec, rather than as an image, for crispness and accessibility); a small hand-drawn "squiggle" SVG accent system (`src/components/brand/squiggle.tsx`), used sparingly - an underline beneath "idea" in the homepage headline, and a hover-circle behind step numbers; a permanently dark "code panel" style for prompt/code blocks regardless of the surrounding light theme (per the spec's "Code Aesthetic" section); and a larger/bolder heading scale matching the spec's H1/H2 sizes. Font stays **Geist** (the spec's explicit alternative to Inter) rather than switching fonts. Out of scope for this pass: the full hand-drawn "scribble becomes structured UI" hero illustration/animation (Section 16 of the design spec) - the hero keeps its existing layout with only the squiggle-underline and copy/type updates.
 
 ---
 
@@ -909,9 +914,16 @@ stays separate from decisions (Section 23) and original scope (Section 22).
 ## Stack as built
 
 - **Framework:** Next.js 16 (App Router, Turbopack), TypeScript.
-- **Styling:** Tailwind CSS v4, dark-first design system (no light mode
-  yet), single accent colour, no gradients/stock imagery — per Section 16.
-- **Icons:** `lucide-react`.
+- **Styling:** Tailwind CSS v4, light "paper" design system (paper
+  background, ink typography, a single Idea Blue accent, no gradients/stock
+  imagery) per `Idea2App Brand & Design System — Cursor Specification.md`
+  — see Section 23 decision log entry. No dark mode toggle; a `.section-dark`
+  utility exists for occasional dark sections but isn't applied anywhere yet.
+- **Icons:** `lucide-react`, plus a small hand-drawn "squiggle" SVG accent
+  system in `src/components/brand/squiggle.tsx`.
+- **Logo:** real brand assets, cropped from `Idea2App_Logo.png` into
+  `public/brand/` and `src/app/icon.png` / `src/app/apple-icon.png`
+  (favicon, apple touch icon). Header/footer use `src/components/brand/logo.tsx`.
 - **Cache Components:** not enabled (`cacheComponents` left off in
   `next.config.ts`) — every route is fully static for Build Pass 1, so the
   simpler default caching model is sufficient. Revisit if/when Build Pass 2
@@ -921,7 +933,7 @@ stays separate from decisions (Section 23) and original scope (Section 22).
   the "basic CMS/content management capability" placeholder from Section
   18 — intentionally simple until Build Pass 2.
 
-## Routes shipped (28 statically prerendered pages)
+## Routes shipped (30 statically prerendered pages)
 
 - `/` — homepage
 - `/steps` — 10-step framework overview
@@ -930,6 +942,8 @@ stays separate from decisions (Section 23) and original scope (Section 22).
 - `/tools/[slug]` — one detail page per tool (10 pages)
 - `/prompts` — prompt library (copy-to-clipboard)
 - `/pricing` — DIY / PRO / Done With You, plus a "Done For You" coming-later callout
+- `/icon.png`, `/apple-icon.png` — favicon and Apple touch icon (Next.js
+  metadata file convention), generated from the real logo
 
 ## Known gaps / not yet done
 
@@ -938,7 +952,9 @@ stays separate from decisions (Section 23) and original scope (Section 22).
 - No auth, dashboard, project creation, or progress tracking (Build Pass 2).
 - Content gating (Section 23) is a simple constant, not a real entitlement
   check — bypassable via page source. Fine as a soft deterrent for now;
-  needs real access control once purchases exist.
+  needs real access control once purchases exist. Free preview is now
+  Step 1 only, plus one free sample prompt; everything else is
+  blurred/locked behind a "Get the DIY Playbook" CTA.
 - No staging environment — Neon/database separation from Section 5 and 15
   hasn't started, since there's no database yet.
 - No analytics installed yet (PostHog was the decision — see Section 23 —

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { Icon } from "@/components/icon";
+import { ToolLogo } from "@/components/tool-logo";
 import type { Tool } from "@/lib/data/tools";
 
 export function ToolCard({ tool }: { tool: Tool }) {
@@ -10,9 +10,7 @@ export function ToolCard({ tool }: { tool: Tool }) {
       className="group flex flex-col gap-4 rounded-2xl border border-border bg-elevated p-6 transition-colors duration-150 hover:border-border-strong hover:bg-elevated-hover"
     >
       <div className="flex items-center justify-between">
-        <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent-soft text-accent">
-          <Icon name={tool.icon} className="h-5 w-5" />
-        </span>
+        <ToolLogo tool={tool} size="sm" />
         <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
           {tool.category}
         </span>

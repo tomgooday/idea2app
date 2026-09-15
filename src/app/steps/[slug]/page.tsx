@@ -20,7 +20,7 @@ export async function generateMetadata({
   const step = getStepBySlug(slug);
   if (!step) return {};
   return {
-    title: `Step ${step.number} — ${step.title}`,
+    title: `Step ${step.number} - ${step.title}`,
     description: step.summary,
   };
 }

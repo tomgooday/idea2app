@@ -31,16 +31,16 @@ export const steps: Step[] = [
     tools: ["claude"],
     output: "A clear product specification.",
     overview:
-      "Every app that stalls out usually stalls for the same reason: nobody wrote down what it actually is. Step 1 forces the clarity that every later step depends on — your product proposition, who it's for, the core problem it solves, and the smallest version of it worth building.",
+      "Every app that stalls out usually stalls for the same reason: nobody wrote down what it actually is. Step 1 forces the clarity that every later step depends on - your product proposition, who it's for, the core problem it solves, and the smallest version of it worth building.",
     whatYouWillDo: [
       "Write a one-sentence product proposition",
       "Define your target customer and their core problem",
-      "Scope your MVP — the smallest version worth building",
+      "Scope your MVP - the smallest version worth building",
       "Map your key user journeys",
       "List functional requirements in plain language",
     ],
     keyPrinciple:
-      "A prototype and a production application are different things — start by being ruthless about what actually needs to exist in version one.",
+      "A prototype and a production application are different things - start by being ruthless about what actually needs to exist in version one.",
     commonMistake:
       "Trying to define every feature you can imagine instead of the smallest useful version.",
   },
@@ -55,7 +55,7 @@ export const steps: Step[] = [
     tools: ["claude"],
     output: "A working product prototype.",
     overview:
-      "Before AI writes a single line of production code, you need to know what you're actually asking it to build. A prototype lets you and anyone else — a co-founder, a friend, a future user — react to something real instead of a description.",
+      "Before AI writes a single line of production code, you need to know what you're actually asking it to build. A prototype lets you and anyone else - a co-founder, a friend, a future user - react to something real instead of a description.",
     whatYouWillDo: [
       "Define your core screens",
       "Map navigation between screens",
@@ -79,9 +79,9 @@ export const steps: Step[] = [
     tools: ["neon"],
     output: "A production-ready database schema.",
     overview:
-      "This is the step most non-technical builders skip — and it's the one that causes the most pain later. AI coding agents are very good at generating an application structure quickly, and very bad at un-generating it once it's wrong. Designing your database first gives the AI a stable foundation to build against.",
+      "This is the step most non-technical builders skip - and it's the one that causes the most pain later. AI coding agents are very good at generating an application structure quickly, and very bad at un-generating it once it's wrong. Designing your database first gives the AI a stable foundation to build against.",
     whatYouWillDo: [
-      "Define your core entities (users, projects, content — whatever your app is about)",
+      "Define your core entities (users, projects, content - whatever your app is about)",
       "Map relationships between entities",
       "Define tables and fields",
       "Design your authentication model and permissions",
@@ -103,7 +103,7 @@ export const steps: Step[] = [
     tools: ["claude", "cursor", "github"],
     output: "A real, working codebase.",
     overview:
-      "This is where the app actually gets built. With a clear specification and a defined database, an AI coding agent stops guessing and starts executing. The goal isn't to generate everything in one giant prompt — it's to build the same way an experienced engineer would: incrementally, with each feature tested before moving to the next.",
+      "This is where the app actually gets built. With a clear specification and a defined database, an AI coding agent stops guessing and starts executing. The goal isn't to generate everything in one giant prompt - it's to build the same way an experienced engineer would: incrementally, with each feature tested before moving to the next.",
     whatYouWillDo: [
       "Create your repository and establish the project structure",
       "Create your database from the schema you designed in Step 3",
@@ -112,7 +112,7 @@ export const steps: Step[] = [
       "Commit changes to GitHub as you go",
     ],
     keyPrinciple:
-      "Treat the AI coding agent like a very fast junior developer — give it clear instructions, and check its work.",
+      "Treat the AI coding agent like a very fast junior developer - give it clear instructions, and check its work.",
     commonMistake:
       "Asking the AI to 'build the whole app' in a single prompt and hoping for the best.",
   },
@@ -127,7 +127,7 @@ export const steps: Step[] = [
     tools: ["vercel", "neon", "github"],
     output: "A properly separated dev → staging → production setup.",
     overview:
-      "Your app needs somewhere to live, and it needs to live somewhere safely. This step sets up hosting and infrastructure the way professional teams do it — with clear separation between the environment you experiment in and the environment real users touch.",
+      "Your app needs somewhere to live, and it needs to live somewhere safely. This step sets up hosting and infrastructure the way professional teams do it - with clear separation between the environment you experiment in and the environment real users touch.",
     whatYouWillDo: [
       "Connect your GitHub repository to Vercel for deployment",
       "Set up environment variables for each environment",
@@ -136,7 +136,7 @@ export const steps: Step[] = [
       "Confirm your API infrastructure and server logs are working",
     ],
     keyPrinciple:
-      "Never build directly against your production environment — a mistake there is a mistake real users can see.",
+      "Never build directly against your production environment - a mistake there is a mistake real users can see.",
     commonMistake:
       "Testing new features directly on the production database because it 'seemed fine.'",
   },
@@ -151,7 +151,7 @@ export const steps: Step[] = [
     tools: ["flutter", "react-native"],
     output: "iOS and Android builds of your app.",
     overview:
-      "A browser tab isn't an app store listing. This step covers turning your product into something that lives on a phone's home screen — and understanding the real trade-offs between a simple web app, a PWA, and a true native mobile build.",
+      "A browser tab isn't an app store listing. This step covers turning your product into something that lives on a phone's home screen - and understanding the real trade-offs between a simple web app, a PWA, and a true native mobile build.",
     whatYouWillDo: [
       "Understand the trade-offs between web app, PWA, Flutter, React Native and native development",
       "Set up a Flutter project (or React Native, if there's a strong reason to)",
@@ -175,7 +175,7 @@ export const steps: Step[] = [
     tools: ["onesignal"],
     output: "Working push and email notifications.",
     overview:
-      "An app that never talks back to its users doesn't get used for long. This step adds the communication layer — push notifications, email, and transactional messages — through a simple API rather than building your own notification infrastructure from scratch.",
+      "An app that never talks back to its users doesn't get used for long. This step adds the communication layer - push notifications, email, and transactional messages - through a simple API rather than building your own notification infrastructure from scratch.",
     whatYouWillDo: [
       "Set up a OneSignal account and connect it to your app",
       "Implement push notifications for key events",
@@ -191,13 +191,13 @@ export const steps: Step[] = [
     slug: "testing",
     title: "Testing",
     summary:
-      "Test the complete user journey — locally, in staging, end-to-end and on real devices — before you ship.",
+      "Test the complete user journey - locally, in staging, end-to-end and on real devices - before you ship.",
     difficulty: "Moderate",
     estimatedTime: "1–3 days",
     tools: ["github"],
     output: "A verified, working end-to-end journey.",
     overview:
-      "This is the step that separates a demo from a product. Before deploying, you walk the entire journey a real user would take — and confirm it actually works, not just that it compiles.",
+      "This is the step that separates a demo from a product. Before deploying, you walk the entire journey a real user would take - and confirm it actually works, not just that it compiles.",
     whatYouWillDo: [
       "Run local testing for each feature",
       "Test the full journey in your staging environment",
@@ -221,7 +221,7 @@ export const steps: Step[] = [
     tools: ["xcode", "google-play-console"],
     output: "Your app submitted to both app stores.",
     overview:
-      "App store submission is where a lot of self-taught builders lose momentum — not because the process is hard, but because it's unfamiliar. This step demystifies developer accounts, signing, metadata and the review process for both platforms.",
+      "App store submission is where a lot of self-taught builders lose momentum - not because the process is hard, but because it's unfamiliar. This step demystifies developer accounts, signing, metadata and the review process for both platforms.",
     whatYouWillDo: [
       "Set up an Apple Developer account and App Store Connect listing",
       "Set up a Google Play Console account",
@@ -237,13 +237,13 @@ export const steps: Step[] = [
     slug: "launch",
     title: "Launch",
     summary:
-      "Run your final launch checklist and take your app live — for real, in public.",
+      "Run your final launch checklist and take your app live - for real, in public.",
     difficulty: "Moderate",
     estimatedTime: "1 day",
     tools: ["vercel", "neon"],
     output: "A real, publicly available application.",
     overview:
-      "This is the finish line. Launch is a checklist, not a leap of faith — domain, production environment, monitoring, legal pages, and store listings all confirmed before you tell a single person your app exists.",
+      "This is the finish line. Launch is a checklist, not a leap of faith - domain, production environment, monitoring, legal pages, and store listings all confirmed before you tell a single person your app exists.",
     whatYouWillDo: [
       "Point your domain at your production environment",
       "Confirm production environment variables and backups",
@@ -257,14 +257,14 @@ export const steps: Step[] = [
 ];
 
 /**
- * Steps 1-2 are fully open as a preview. Steps 3-10 are the core paid IP
+ * Step 1 is fully open as a preview. Steps 2-10 are the core paid IP
  * of the DIY Playbook, so their full checklist is gated on the public
- * site — see PRD Section 23 ("Content gating").
+ * site - see PRD Section 23 ("Content gating").
  *
  * This is a Build Pass 1 stopgap (no real entitlement check). Build Pass 2
  * replaces this with real access control tied to a purchase/account.
  */
-const FREE_PREVIEW_STEP_COUNT = 2;
+const FREE_PREVIEW_STEP_COUNT = 1;
 
 export function isStepFree(number: number): boolean {
   return number <= FREE_PREVIEW_STEP_COUNT;

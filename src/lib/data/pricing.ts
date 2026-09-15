@@ -15,7 +15,7 @@ export type PricingPlan = {
 };
 
 /**
- * Pricing structure confirmed with stakeholder — see PRD Section 14 and
+ * Pricing structure confirmed with stakeholder - see PRD Section 14 and
  * Section 23 (Decisions Log). Prices are ranges for now; exact price points
  * are still being finalised, and there is no live checkout in Build Pass 1.
  */
@@ -29,7 +29,7 @@ export const pricingPlans: PricingPlan[] = [
     description:
       "Everything you need to build it yourself: videos, prompts, templates and checklists for all 10 steps.",
     features: [
-      "Complete 10-step framework — video walkthroughs for every step",
+      "Complete 10-step framework - video walkthroughs for every step",
       "Full AI prompt library",
       "All templates (PRD, database schema, API spec, and more)",
       "Step-by-step checklists for every step",
@@ -82,9 +82,9 @@ export const pricingPlans: PricingPlan[] = [
     priceRange: "Coming later",
     billingNote: "",
     description:
-      "For founders who want the outcome, not the process. A full product studio offering — coming after DIY, Pro and Done With You are live.",
+      "For founders who want the outcome, not the process. A full product studio offering - coming after DIY, Pro and Done With You are live.",
     features: [
-      "You describe the idea — we scope, build and launch it",
+      "You describe the idea - we scope, build and launch it",
       "For founders who'd rather pay for the outcome than learn the process",
     ],
     cta: "Join the Waitlist",

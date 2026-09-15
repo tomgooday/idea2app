@@ -9,7 +9,7 @@ export function PricingCard({ plan }: { plan: PricingPlan }) {
       className={cn(
         "flex flex-col gap-6 rounded-2xl border p-8",
         plan.highlighted
-          ? "border-accent bg-accent-soft/40 shadow-[0_0_0_1px_rgba(109,110,248,0.4)]"
+          ? "border-accent bg-accent-soft/60 shadow-[0_0_0_1px_rgba(37,99,235,0.4)]"
           : "border-border bg-elevated",
         plan.comingSoon && "opacity-80"
       )}

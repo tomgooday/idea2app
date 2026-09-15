@@ -1,15 +1,15 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check, X } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/section-heading";
 import { StepCard } from "@/components/step-card";
 import { ToolCard } from "@/components/tool-card";
 import { PricingCard } from "@/components/pricing-card";
+import { SquiggleUnderline } from "@/components/brand/squiggle";
 import { steps } from "@/lib/data/steps";
 import { tools } from "@/lib/data/tools";
 import { pricingPlans } from "@/lib/data/pricing";
-import { siteConfig } from "@/lib/config";
 
 const ecosystem = [
   "Claude",
@@ -24,6 +24,20 @@ const ecosystem = [
   "Google Play",
 ];
 
+const prototypeLimits = [
+  "A hosted demo, locked to their platform",
+  "Fine until you outgrow their limits or their pricing",
+  "No real database, codebase or hosting you control",
+  "Nothing to submit to the App Store or Google Play",
+];
+
+const blueprintWins = [
+  "A real codebase, database and hosting - all yours",
+  "Built to keep shipping long after you launch",
+  "No platform lock-in and no usage ceiling",
+  "A real path to the App Store and Google Play",
+];
+
 export default function HomePage() {
   return (
     <>
@@ -32,21 +46,24 @@ export default function HomePage() {
         <div className="bg-grid mask-fade-bottom pointer-events-none absolute inset-0" />
         <Container className="relative py-24 sm:py-32">
           <div className="mx-auto max-w-3xl text-center">
-            <Link
-              href="/steps"
-              className="inline-flex items-center gap-2 rounded-full border border-border-strong bg-elevated px-4 py-1.5 text-sm text-muted transition-colors hover:text-foreground"
-            >
-              {siteConfig.proposition}
-              <ArrowRight className="h-3.5 w-3.5" />
-            </Link>
+            <p className="text-sm font-semibold uppercase tracking-[0.14em] text-accent">
+              The AI App-Building Playbook
+            </p>
 
-            <h1 className="mt-8 text-balance text-5xl font-semibold tracking-tight text-foreground sm:text-6xl">
-              From idea to App Store in 10 steps.
+            <h1 className="mt-5 text-balance text-5xl font-bold tracking-tight text-foreground sm:text-7xl">
+              From{" "}
+              <span className="relative inline-block">
+                idea
+                <SquiggleUnderline className="absolute inset-x-0 -bottom-1.5" />
+              </span>{" "}
+              to App Store in 10 steps.
             </h1>
 
             <p className="mx-auto mt-6 max-w-xl text-balance text-lg leading-relaxed text-muted">
-              Build a real iOS, Android and web application using AI — even
-              if you&apos;ve never written a line of code.
+              Tools like Lovable, Bolt and Base44 hand you a prototype in
+              their sandbox. Idea2App gives you the blueprint to build,
+              launch and maintain a real iOS, Android and web app yourself -
+              on your own stack, with no platform ceiling.
             </p>
 
             <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -55,7 +72,7 @@ export default function HomePage() {
                 <ArrowRight className="h-4 w-4" />
               </Button>
               <Button href="/steps" variant="secondary" size="lg">
-                See How It Works
+                See the 10 Steps
               </Button>
             </div>
           </div>
@@ -74,7 +91,7 @@ export default function HomePage() {
                 It didn&apos;t make building an app simple.
               </>
             }
-            description="A non-technical founder with an idea still needs to understand AI tools, databases, hosting, authentication, mobile frameworks, notifications, and both app stores — and how they all connect."
+            description="A non-technical founder with an idea still needs to understand AI tools, databases, hosting, authentication, mobile frameworks, notifications, and both app stores - and how they all connect."
           />
 
           <div className="mx-auto mt-14 flex max-w-4xl flex-wrap items-center justify-center gap-x-3 gap-y-4">
@@ -96,6 +113,48 @@ export default function HomePage() {
         </Container>
       </section>
 
+      {/* Prototype vs. blueprint */}
+      <section className="border-b border-border py-24 sm:py-28">
+        <Container>
+          <SectionHeading
+            align="center"
+            eyebrow="The Difference"
+            title="A prototype is not a product."
+            description="Lovable, Bolt and Base44 are great for a quick demo. Idea2App is for founders who want to own and run the real thing."
+          />
+
+          <div className="mx-auto mt-14 grid max-w-4xl gap-6 sm:grid-cols-2">
+            <div className="rounded-2xl border border-border bg-elevated p-8">
+              <h3 className="text-sm font-medium uppercase tracking-wide text-muted-foreground">
+                Prototype tools
+              </h3>
+              <ul className="mt-5 space-y-4">
+                {prototypeLimits.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-muted">
+                    <X className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" />
+                    <span className="leading-relaxed">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="rounded-2xl border border-accent/40 bg-accent-soft p-8">
+              <h3 className="text-sm font-medium uppercase tracking-wide text-accent">
+                Idea2App
+              </h3>
+              <ul className="mt-5 space-y-4">
+                {blueprintWins.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-foreground">
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                    <span className="leading-relaxed">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </Container>
+      </section>
+
       {/* 10 steps preview */}
       <section className="border-b border-border py-24 sm:py-28">
         <Container>
@@ -103,7 +162,7 @@ export default function HomePage() {
             <SectionHeading
               eyebrow="The Framework"
               title="10 steps. One clear path."
-              description="Every step tells you what to build, what tools to use, and what to give the AI — in order."
+              description="Every step tells you what to build, what tools to use, and what to give the AI - in order."
             />
             <Button href="/steps" variant="secondary">
               View all 10 steps
@@ -126,7 +185,7 @@ export default function HomePage() {
             <SectionHeading
               eyebrow="The Stack"
               title="A recommended tool for every step."
-              description="No more guessing what to use. Every tool is explained — what it does, why we recommend it, and what it costs."
+              description="No more guessing what to use. Every tool is explained - what it does, why we recommend it, and what it costs."
             />
             <Button href="/tools" variant="secondary">
               View tool directory
@@ -149,7 +208,7 @@ export default function HomePage() {
             align="center"
             eyebrow="Pricing"
             title="Pick how hands-on you want us to be."
-            description="Browsing the whole framework is free. When you're ready to build, choose your level of support."
+            description="Step 1 and a sample prompt are free to try. The full playbook, prompts and templates are how you actually build and launch."
           />
 
           <div className="mx-auto mt-14 grid max-w-5xl gap-6 sm:grid-cols-3">

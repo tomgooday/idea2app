@@ -16,32 +16,37 @@ const faqs = [
   {
     question: "Do I need to know how to code?",
     answer:
-      "No. The framework is built for non-technical founders. You'll understand what's happening at every step, but the AI coding agent does the implementation — and with Done With You, our team helps directly.",
+      "No. The framework is built for non-technical founders. You'll understand what's happening at every step, but the AI coding agent does the implementation - and with Done With You, our team helps directly.",
   },
   {
     question: "What's the difference between DIY and Pro?",
     answer:
-      "DIY gives you the complete 10-step playbook — videos, the full prompt library, and every template and checklist, all self-serve. Pro adds a private community, priority access to new prompts and templates, and an expert review of your app as you build it.",
+      "DIY gives you the complete 10-step playbook - videos, the full prompt library, and every template and checklist, all self-serve. Pro adds a private community, priority access to new prompts and templates, and an expert review of your app as you build it.",
   },
   {
     question: "What does Done With You actually include?",
     answer:
-      "Everything in Pro, plus direct, hands-on help from our team as you build — architecture and code reviews, troubleshooting, and support getting through App Store and Google Play submission. You still drive the project; we sit alongside you.",
+      "Everything in Pro, plus direct, hands-on help from our team as you build - architecture and code reviews, troubleshooting, and support getting through App Store and Google Play submission. You still drive the project; we sit alongside you.",
   },
   {
     question: "Is Done For You available now?",
     answer:
-      "Not yet. Done For You — where you hand us the idea and we build it — is a larger, product-studio-style offering we're planning after DIY, Pro and Done With You are live. Join the waitlist to hear when it opens.",
+      "Not yet. Done For You - where you hand us the idea and we build it - is a larger, product-studio-style offering we're planning after DIY, Pro and Done With You are live. Join the waitlist to hear when it opens.",
   },
   {
     question: "When can I actually buy DIY, Pro, or Done With You?",
     answer:
-      "Checkout isn't live on the site yet — that's next on our build list. In the meantime, use the buttons on this page to register interest and we'll reach out directly.",
+      "Checkout isn't live on the site yet - that's next on our build list. In the meantime, use the buttons on this page to register interest and we'll reach out directly.",
   },
   {
     question: "Can I use my own tools instead of the recommended stack?",
     answer:
       "Yes. The framework explains why each tool is recommended and lists alternatives, so you can substitute where it makes sense for you.",
+  },
+  {
+    question: "How is this different from Lovable, Bolt, or Base44?",
+    answer:
+      "Those tools are great for a quick, hosted prototype - Step 2 of our framework. Idea2App is what comes after: a real codebase, database and hosting that you own, built to go all the way to a launched App Store and Google Play app, with no platform ceiling to hit later.",
   },
 ];
 
@@ -57,7 +62,7 @@ export default function PricingPage() {
             align="center"
             eyebrow="Pricing"
             title="Pick how hands-on you want us to be."
-            description="Browsing the whole 10-step framework is free. These three products take you from framework to a real, launched app."
+            description="Step 1 and a sample prompt are free to try. These three products give you the full playbook to take you from framework to a real, launched app."
           />
         </Container>
       </section>

@@ -22,7 +22,7 @@ export default function PromptsPage() {
             align="center"
             eyebrow="AI Prompt Library"
             title="The exact prompts, at the exact step you need them."
-            description="Copy, edit, and hand these straight to Claude or Cursor. This is a starter set — the full library ships with Pro."
+            description="Copy, edit, and hand these straight to Claude or Cursor. The first is free - the full library, one prompt per step, is part of the DIY Playbook."
           />
         </Container>
       </section>
