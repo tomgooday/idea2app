@@ -18,15 +18,17 @@ export type PricingPlan = {
 
 /**
  * Pricing structure confirmed with stakeholder - see PRD Section 14 and
- * Section 23 (Decisions Log). Prices are ranges for now; exact price points
- * are still being finalised, and there is no live checkout in Build Pass 1.
+ * Section 23 (Decisions Log). DIY and PRO have fixed prices; Done With You
+ * stays a range until a cohort price point is set. There is no live
+ * checkout yet in Build Pass 1 - Lemon Squeezy is the decided merchant of
+ * record (Section 23) but the store/products aren't created yet.
  */
 export const pricingPlans: PricingPlan[] = [
   {
     slug: "diy",
     name: "DIY",
     tagline: "The 10-Step Playbook",
-    priceRange: "$99–299",
+    priceRange: "$199",
     billingNote: "one-time",
     description:
       "Everything you need to build it yourself: videos, prompts, templates and checklists for all 10 steps.",
@@ -44,7 +46,7 @@ export const pricingPlans: PricingPlan[] = [
     slug: "pro",
     name: "PRO",
     tagline: "Build Your App",
-    priceRange: "$500–1,500",
+    priceRange: "$999",
     billingNote: "one-time",
     description:
       "The playbook, plus the support and accountability to actually finish building.",

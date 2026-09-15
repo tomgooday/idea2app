@@ -114,13 +114,14 @@ being handled ad hoc.
 
 - ~~Which merchant of record: Lemon Squeezy vs. Paddle~~ — **decided:
   Lemon Squeezy** (see PRD Section 23).
-- Exact price points for DIY and PRO within the $99–299 and $500–1,500
-  ranges — Lemon Squeezy needs a fixed price per product/variant, not a
-  range.
-- Delivery mechanism for DIY once purchased: Lemon Squeezy's native
-  file-delivery (upload the playbook as a downloadable bundle, no code)
-  vs. a custom webhook into a gated route. Native file delivery is the
-  zero-engineering option and fits Build Pass 1 (no auth/DB yet).
+- ~~Exact price points for DIY and PRO~~ — **decided: DIY $199, PRO $999**
+  (see PRD Section 23).
+- ~~Delivery mechanism for DIY once purchased~~ — **decided: webhook-based
+  access grant, not native file delivery** (see PRD Section 23), since PRO
+  needs ongoing gated access that a one-off file can't cover and using one
+  mechanism for both avoids building two paths. Implemented as a
+  stateless, DB-free signed token/cookie rather than full accounts, to
+  stay in Build Pass 1 scope. Not yet built.
 - Community platform: Discord vs. Skool for the PRO community, and
   whether the purchase → invite automation (Zapier/Make off the Lemon
   Squeezy webhook) is worth building before or after the first sale.
