@@ -6,6 +6,7 @@ import { Container } from "@/components/ui/container";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { LockedChecklist } from "@/components/locked-checklist";
+import { ToolLogo } from "@/components/tool-logo";
 import { getAdjacentSteps, getStepBySlug, isStepFree, steps } from "@/lib/data/steps";
 import { getToolBySlug } from "@/lib/data/tools";
 
@@ -152,9 +153,10 @@ export default async function StepDetailPage({
                   {recommendedTools.map((tool) => (
                     <li key={tool.slug}>
                       <Link
-                        href="/tools"
-                        className="text-sm text-muted transition-colors hover:text-foreground"
+                        href={`/tools/${tool.slug}`}
+                        className="flex items-center gap-2.5 text-sm text-muted transition-colors hover:text-foreground"
                       >
+                        <ToolLogo tool={tool} size="xs" />
                         {tool.name}
                       </Link>
                     </li>

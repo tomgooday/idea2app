@@ -145,11 +145,3 @@ Please:
 export function isPromptFree(slug: string): boolean {
   return prompts.find((p) => p.slug === slug)?.free ?? false;
 }
-
-export function getPromptsByCategory(): Record<PromptCategory, Prompt[]> {
-  return prompts.reduce((acc, prompt) => {
-    acc[prompt.category] = acc[prompt.category] ?? [];
-    acc[prompt.category].push(prompt);
-    return acc;
-  }, {} as Record<PromptCategory, Prompt[]>);
-}

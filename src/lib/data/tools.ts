@@ -230,11 +230,3 @@ export function getAdjacentTools(slug: string) {
     next: index >= 0 && index < tools.length - 1 ? tools[index + 1] : undefined,
   };
 }
-
-export function getToolsByCategory(): Record<ToolCategory, Tool[]> {
-  return tools.reduce((acc, tool) => {
-    acc[tool.category] = acc[tool.category] ?? [];
-    acc[tool.category].push(tool);
-    return acc;
-  }, {} as Record<ToolCategory, Tool[]>);
-}

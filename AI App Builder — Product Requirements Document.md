@@ -932,6 +932,12 @@ stays separate from decisions (Section 23) and original scope (Section 22).
   prompts, pricing) lives as typed data in `src/lib/data/*.ts`, matching
   the "basic CMS/content management capability" placeholder from Section
   18 — intentionally simple until Build Pass 2.
+- **Directory pages:** `/tools` and `/prompts` render as a single flat
+  responsive grid (3-column on desktop for tools, 2-column for prompts)
+  rather than grouped by category — most categories only had one item, so
+  grouping just produced a long single-column scroll. Real tool logos
+  (`src/components/tool-logo.tsx`) now also appear on `/steps` (tool
+  chips) and `/steps/[slug]` (recommended tools), matching `/tools`.
 
 ## Routes shipped (30 statically prerendered pages)
 

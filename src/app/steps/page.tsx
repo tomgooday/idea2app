@@ -4,13 +4,14 @@ import { ArrowRight, Lock } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Badge } from "@/components/ui/badge";
 import { SectionHeading } from "@/components/section-heading";
+import { ToolLogo } from "@/components/tool-logo";
 import { isStepFree, steps } from "@/lib/data/steps";
 import { getToolBySlug } from "@/lib/data/tools";
 
 export const metadata: Metadata = {
   title: "The 10 Steps",
   description:
-    "The complete framework for turning an idea into a real, launched application - idea, prototype, database, code, backend, mobile, testing, app stores, and launch.",
+    "10 steps from idea to App Store. Each one tells you what to build, which tool to use, and what to ask the AI.",
 };
 
 export default function StepsPage() {
@@ -21,8 +22,8 @@ export default function StepsPage() {
           <SectionHeading
             align="center"
             eyebrow="The Framework"
-            title="Idea → Prototype → Database → Code → Backend → Mobile → Testing → App Stores → Launch"
-            description="Ten steps. Each one tells you exactly what to build, what tool to use, and what to hand the AI. Step 1 is open to everyone - the full walkthrough for Steps 2-10, including the exact prompts, is part of the DIY Playbook."
+            title="10 steps. One clear path."
+            description="What to build, which tool, and what to ask the AI - in order. Step 1 is free. The rest is the DIY Playbook."
           />
         </Container>
       </section>
@@ -67,8 +68,9 @@ export default function StepsPage() {
                         return tool ? (
                           <span
                             key={toolSlug}
-                            className="rounded-full bg-background px-2.5 py-1 text-xs text-muted-foreground"
+                            className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background py-1 pl-1 pr-2.5 text-xs text-muted"
                           >
+                            <ToolLogo tool={tool} size="xs" />
                             {tool.name}
                           </span>
                         ) : null;

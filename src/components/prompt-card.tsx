@@ -23,7 +23,10 @@ export function PromptCard({ prompt }: { prompt: Prompt }) {
     <div className="flex flex-col gap-4 rounded-2xl border border-border bg-elevated p-6">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <h3 className="text-base font-semibold text-foreground">
+          <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+            {prompt.category}
+          </span>
+          <h3 className="mt-1.5 text-base font-semibold text-foreground">
             {prompt.title}
           </h3>
           <p className="mt-1.5 text-sm leading-relaxed text-muted">
@@ -57,12 +60,12 @@ export function PromptCard({ prompt }: { prompt: Prompt }) {
       </div>
 
       {free ? (
-        <pre className="code-panel overflow-x-auto rounded-xl p-4 text-[13px] leading-relaxed">
+        <pre className="code-panel max-h-52 overflow-auto rounded-xl p-4 text-[13px] leading-relaxed">
           <code className="whitespace-pre-wrap font-mono">{prompt.prompt}</code>
         </pre>
       ) : (
-        <div className="relative overflow-hidden rounded-xl">
-          <pre className="code-panel overflow-x-auto rounded-xl p-4 text-[13px] leading-relaxed pointer-events-none opacity-60 blur-[5px] select-none">
+        <div className="relative max-h-52 overflow-hidden rounded-xl">
+          <pre className="code-panel overflow-hidden rounded-xl p-4 text-[13px] leading-relaxed pointer-events-none opacity-60 blur-[5px] select-none">
             <code className="whitespace-pre-wrap font-mono">{prompt.prompt}</code>
           </pre>
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-gradient-to-t from-code-bg via-code-bg/90 to-transparent px-4 text-center">

@@ -60,10 +60,9 @@ export default function HomePage() {
             </h1>
 
             <p className="mx-auto mt-6 max-w-xl text-balance text-lg leading-relaxed text-muted">
-              Tools like Lovable, Bolt and Base44 hand you a prototype in
-              their sandbox. Idea2App gives you the blueprint to build,
-              launch and maintain a real iOS, Android and web app yourself -
-              on your own stack, with no platform ceiling.
+              Other tools give you a prototype in their sandbox. Idea2App
+              gives you the blueprint to build and launch a real app - on
+              your own stack, no platform ceiling.
             </p>
 
             <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -91,7 +90,7 @@ export default function HomePage() {
                 It didn&apos;t make building an app simple.
               </>
             }
-            description="A non-technical founder with an idea still needs to understand AI tools, databases, hosting, authentication, mobile frameworks, notifications, and both app stores - and how they all connect."
+            description="One idea. A dozen tools you now have to learn and connect - AI, database, hosting, auth, mobile, notifications, both app stores."
           />
 
           <div className="mx-auto mt-14 flex max-w-4xl flex-wrap items-center justify-center gap-x-3 gap-y-4">
@@ -184,8 +183,8 @@ export default function HomePage() {
           <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
             <SectionHeading
               eyebrow="The Stack"
-              title="A recommended tool for every step."
-              description="No more guessing what to use. Every tool is explained - what it does, why we recommend it, and what it costs."
+              title="A tool for every step, chosen for you."
+              description="What it does, why we recommend it, what it costs - no guesswork."
             />
             <Button href="/tools" variant="secondary">
               View tool directory
