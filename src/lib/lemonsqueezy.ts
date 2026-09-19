@@ -17,6 +17,18 @@ export type PlanSlug = "diy" | "pro";
 
 const LEMONSQUEEZY_API_BASE = "https://api.lemonsqueezy.com/v1";
 
+/**
+ * Important: Lemon Squeezy uses two different identifiers per variant -
+ * a numeric ID (e.g. `2145225`), which is what appears in order/webhook
+ * payloads (`first_order_item.variant_id`), and a separate UUID (e.g.
+ * `58d330e9-374d-4be0-9e22-5c198e0990c7`) used in the hosted checkout URL
+ * (`/checkout/buy/{uuid}`). They are NOT interchangeable.
+ *
+ * `LEMONSQUEEZY_*_VARIANT_ID` (numeric) is used by `planForVariantId` to
+ * identify a paid order. `LEMONSQUEEZY_*_CHECKOUT_URL` (the full buy_now_url
+ * from the product/variant API response) is used by `getCheckoutUrl`. Get
+ * both from `GET /v1/products?include=variants` rather than guessing.
+ */
 function getVariantId(plan: PlanSlug): string | undefined {
   return plan === "diy"
     ? process.env.LEMONSQUEEZY_DIY_VARIANT_ID
@@ -24,17 +36,17 @@ function getVariantId(plan: PlanSlug): string | undefined {
 }
 
 /**
- * Builds a Lemon Squeezy hosted "buy" checkout link for a plan, e.g.
- * `https://idea2app.lemonsqueezy.com/checkout/buy/xxxxx`.
+ * Returns the Lemon Squeezy hosted "buy" checkout link for a plan.
  *
- * Returns `null` if the store slug or that plan's variant ID isn't
- * configured yet, so callers can fall back to a placeholder.
+ * Returns `null` if that plan's checkout URL isn't configured yet, so
+ * callers can fall back to a placeholder.
  */
 export function getCheckoutUrl(plan: PlanSlug): string | null {
-  const storeSlug = process.env.LEMONSQUEEZY_STORE_SLUG;
-  const variantId = getVariantId(plan);
-  if (!storeSlug || !variantId) return null;
-  return `https://${storeSlug}.lemonsqueezy.com/checkout/buy/${variantId}`;
+  const url =
+    plan === "diy"
+      ? process.env.LEMONSQUEEZY_DIY_CHECKOUT_URL
+      : process.env.LEMONSQUEEZY_PRO_CHECKOUT_URL;
+  return url || null;
 }
 
 export type LemonSqueezyOrder = {
@@ -87,10 +99,10 @@ export async function getOrder(orderId: string): Promise<LemonSqueezyOrder | nul
   };
 }
 
-/** Maps a Lemon Squeezy variant ID back to which plan it corresponds to. */
+/** Maps a Lemon Squeezy (numeric) variant ID back to which plan it corresponds to. */
 export function planForVariantId(variantId: string | null): PlanSlug | null {
   if (!variantId) return null;
-  if (variantId === process.env.LEMONSQUEEZY_DIY_VARIANT_ID) return "diy";
-  if (variantId === process.env.LEMONSQUEEZY_PRO_VARIANT_ID) return "pro";
+  if (variantId === getVariantId("diy")) return "diy";
+  if (variantId === getVariantId("pro")) return "pro";
   return null;
 }
